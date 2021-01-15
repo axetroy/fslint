@@ -11,7 +11,23 @@ a cli tool for lint File System
 ### Usage
 
 ```bash
+$ fslint --config=.fslint.json
+```
 
+`.fslint.json` is a JSON file look like this:
+
+```json
+{
+  "exclude": [
+    "vendor",
+    "node_modules",
+    "bin"
+  ],
+  "include": {
+    "src/**/*.vue": "CamelCase",
+    "src/**/*.ts": "CamelCase"
+  }
+}
 ```
 
 ### Installation
