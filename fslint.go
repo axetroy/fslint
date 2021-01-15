@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
-	"regexp"
 	"strings"
 
 	"github.com/axetroy/fslint/parser"
@@ -21,15 +20,6 @@ var (
 	ModeLittleKebab     Mode = "kebab-kebab"
 	ModeBigSnakeCase    Mode = "Snake_Case"
 	ModeLittleSnakeCase Mode = "snake_case"
-
-	TestMap map[Mode]*regexp.Regexp = map[Mode]*regexp.Regexp{
-		ModeBigCamelCase:    regexp.MustCompile(``),
-		ModeLittleCamelCase: regexp.MustCompile(``),
-		ModeBigKebab:        regexp.MustCompile(``),
-		ModeLittleKebab:     regexp.MustCompile(``),
-		ModeBigSnakeCase:    regexp.MustCompile(``),
-		ModeLittleSnakeCase: regexp.MustCompile(``),
-	}
 )
 
 type Config struct {
@@ -97,43 +87,44 @@ func Lint(configFilepath string) ([]LintResult, error) {
 				}
 			}
 
-			filename := filepath.Base(file)
+			filenameWithExtension := filepath.Base(file)
+			filenameWitoutExtension := filenameWithExtension
 
-			extName := filepath.Ext(filename)
+			extName := filepath.Ext(filenameWitoutExtension)
 
 			if extName != "" {
-				filename = strings.TrimRight(filename, extName)
+				filenameWitoutExtension = strings.TrimRight(filenameWitoutExtension, extName)
 			}
 
 			switch mode {
 			case ModeBigCamelCase:
-				if !parser.IsCamelCase(filename, true) {
+				if !parser.IsCamelCase(filenameWitoutExtension, true) {
 					results = append(results, LintResult{
-						FileName: filename,
+						FileName: filenameWithExtension,
 						FilePath: file,
 						Expect:   ModeBigCamelCase,
 					})
 				}
 			case ModeLittleCamelCase:
-				if !parser.IsCamelCase(filename, false) {
+				if !parser.IsCamelCase(filenameWitoutExtension, false) {
 					results = append(results, LintResult{
-						FileName: filename,
+						FileName: filenameWithExtension,
 						FilePath: file,
 						Expect:   ModeLittleCamelCase,
 					})
 				}
 			case ModeBigKebab:
-				if !parser.IsKebab(filename, true) {
+				if !parser.IsKebab(filenameWitoutExtension, true) {
 					results = append(results, LintResult{
-						FileName: filename,
+						FileName: filenameWithExtension,
 						FilePath: file,
 						Expect:   ModeBigKebab,
 					})
 				}
 			case ModeLittleKebab:
-				if !parser.IsKebab(filename, false) {
+				if !parser.IsKebab(filenameWitoutExtension, false) {
 					results = append(results, LintResult{
-						FileName: filename,
+						FileName: filenameWithExtension,
 						FilePath: file,
 						Expect:   ModeLittleKebab,
 					})
