@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/axetroy/fslint/parser"
+	zglob "github.com/mattn/go-zglob"
 	"github.com/pkg/errors"
 	glob "github.com/ryanuber/go-glob"
 )
@@ -62,7 +63,7 @@ func Lint(configFilepath string) ([]LintResult, error) {
 	}
 
 	for pattern, mode := range config.Include {
-		matchers, err := filepath.Glob(pattern)
+		matchers, err := zglob.Glob(pattern)
 
 		if err != nil {
 			return nil, errors.WithStack(err)

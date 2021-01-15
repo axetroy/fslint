@@ -5,6 +5,10 @@ github.com/fatih/color
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.12
 github.com/mattn/go-isatty
+# github.com/mattn/go-zglob v0.0.3
+## explicit
+github.com/mattn/go-zglob
+github.com/mattn/go-zglob/fastwalk
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
