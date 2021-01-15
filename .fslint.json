@@ -5,6 +5,6 @@
     "README.md"
   ],
   "include": {
-    "./__test__/**.md": "kebab-kebab"
+    "./__test__/**/**.md": "kebab-kebab"
   }
 }

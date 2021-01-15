@@ -9,6 +9,7 @@ import (
 
 	"github.com/axetroy/fslint/parser"
 	"github.com/pkg/errors"
+	glob "github.com/ryanuber/go-glob"
 )
 
 type Mode string
@@ -77,7 +78,25 @@ func Lint(configFilepath string) ([]LintResult, error) {
 			return nil, errors.WithStack(err)
 		}
 
+	loop:
 		for _, file := range matchers {
+
+			// exclude
+			paths := strings.Split(file, string(filepath.Separator))
+			for _, pattern := range config.Exclude {
+				if strings.Contains(pattern, "*") {
+					if glob.Glob(pattern, file) {
+						continue loop
+					}
+				} else {
+					for _, p := range paths {
+						if p == pattern {
+							continue loop
+						}
+					}
+				}
+			}
+
 			filename := filepath.Base(file)
 
 			extName := filepath.Ext(filename)
