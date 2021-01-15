@@ -57,9 +57,21 @@ func TestLint(t *testing.T) {
 				t.Errorf("Lint() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Lint() = %v, want %v", got, tt.want)
+			for _, want := range tt.want {
+				catch := false
+				for _, g := range got {
+					if g.FilePath == want.FilePath {
+						catch = true
+						if !reflect.DeepEqual(g, want) {
+							t.Errorf("Lint() = %v, want %v", g, want)
+						}
+					}
+				}
+				if !reflect.DeepEqual(catch, true) {
+					t.Errorf("Lint() = %v, want %v", got, tt.want)
+				}
 			}
+
 		})
 	}
 }
