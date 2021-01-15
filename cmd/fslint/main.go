@@ -27,6 +27,7 @@ ARGUMENTS:
 OPTIONS:
   --help        Print help information.
   --version     Print version information.
+  --config      Specify ‘.fslint.json’. defaults to '.fslint.json'.
 
 SOURCE CODE:
   https://github.com/axetroy/fslint`)
