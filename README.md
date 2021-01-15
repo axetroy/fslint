@@ -18,17 +18,22 @@ $ fslint --config=.fslint.json
 
 ```json
 {
-  "exclude": [
-    "vendor",
-    "node_modules",
-    "bin"
-  ],
+  "exclude": ["vendor", "node_modules", "bin"],
   "include": {
     "src/**/*.vue": "CamelCase",
     "src/**/*.ts": "CamelCase"
   }
 }
 ```
+
+| Style           | Description                                                        | Example               | Recommend |
+| --------------- | ------------------------------------------------------------------ | --------------------- | --------- |
+| **CamelCase**   | Camel case with initial capital                                    | `HelloWorld`/`GoTo`   | Yes       |
+| **camelCase**   | Camel case with lowercase initials                                 | `helloWorld`/`goTo`   |           |
+| **Kebab-Kebab** | Uppercase letters and concatenated by symbols `-`                  | `Hello-World`/`Go-To` |           |
+| **kebab-kebab** | Lowercase letters and concatenated by symbols `-`                  | `hello-world`/`go-to` | Yes       |
+| **Snake_Case**  | Uppercase letters snake case style and concatenated by symbols `_` | `Hello_World`/`Go_To` |           |
+| **snake_case**  | Lowercase letters snake case style and concatenated by symbols `_` | `hello_world`/`go_to` | Yes       |
 
 ### Installation
 
