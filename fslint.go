@@ -51,6 +51,16 @@ func readConfig(configFilepath string) (Config, error) {
 	return config, nil
 }
 
+func hasResultExist(results []LintResult, filepath string) bool {
+	for _, result := range results {
+		if result.FilePath == filepath {
+			return true
+		}
+	}
+
+	return false
+}
+
 func Lint(configFilepath string) ([]LintResult, error) {
 	var (
 		results = make([]LintResult, 0)
@@ -100,38 +110,64 @@ func Lint(configFilepath string) ([]LintResult, error) {
 			switch mode {
 			case ModeBigCamelCase:
 				if !parser.IsCamelCase(filenameWitoutExtension, true) {
-					results = append(results, LintResult{
-						FileName: filenameWithExtension,
-						FilePath: file,
-						Expect:   ModeBigCamelCase,
-					})
+					if !hasResultExist(results, file) {
+						results = append(results, LintResult{
+							FileName: filenameWithExtension,
+							FilePath: file,
+							Expect:   ModeBigCamelCase,
+						})
+					}
 				}
 			case ModeLittleCamelCase:
 				if !parser.IsCamelCase(filenameWitoutExtension, false) {
-					results = append(results, LintResult{
-						FileName: filenameWithExtension,
-						FilePath: file,
-						Expect:   ModeLittleCamelCase,
-					})
+					if !hasResultExist(results, file) {
+						results = append(results, LintResult{
+							FileName: filenameWithExtension,
+							FilePath: file,
+							Expect:   ModeLittleCamelCase,
+						})
+					}
 				}
 			case ModeBigKebab:
 				if !parser.IsKebab(filenameWitoutExtension, true) {
-					results = append(results, LintResult{
-						FileName: filenameWithExtension,
-						FilePath: file,
-						Expect:   ModeBigKebab,
-					})
+					if !hasResultExist(results, file) {
+						results = append(results, LintResult{
+							FileName: filenameWithExtension,
+							FilePath: file,
+							Expect:   ModeBigKebab,
+						})
+					}
 				}
 			case ModeLittleKebab:
 				if !parser.IsKebab(filenameWitoutExtension, false) {
-					results = append(results, LintResult{
-						FileName: filenameWithExtension,
-						FilePath: file,
-						Expect:   ModeLittleKebab,
-					})
+					if !hasResultExist(results, file) {
+						results = append(results, LintResult{
+							FileName: filenameWithExtension,
+							FilePath: file,
+							Expect:   ModeLittleKebab,
+						})
+					}
 				}
 			case ModeBigSnakeCase:
+				if !parser.IsSnakeCase(filenameWitoutExtension, true) {
+					if !hasResultExist(results, file) {
+						results = append(results, LintResult{
+							FileName: filenameWithExtension,
+							FilePath: file,
+							Expect:   ModeBigSnakeCase,
+						})
+					}
+				}
 			case ModeLittleSnakeCase:
+				if !parser.IsSnakeCase(filenameWitoutExtension, false) {
+					if !hasResultExist(results, file) {
+						results = append(results, LintResult{
+							FileName: filenameWithExtension,
+							FilePath: file,
+							Expect:   ModeLittleSnakeCase,
+						})
+					}
+				}
 			}
 		}
 	}

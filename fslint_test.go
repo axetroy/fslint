@@ -23,11 +23,6 @@ func TestLint(t *testing.T) {
 			wantErr: false,
 			want: []LintResult{
 				{
-					FilePath: "__test__/CamelCase11.md",
-					FileName: "CamelCase11.md",
-					Expect:   ModeLittleKebab,
-				},
-				{
 					FilePath: "__test__/Kebab-Kebab21.md",
 					FileName: "Kebab-Kebab21.md",
 					Expect:   ModeLittleKebab,
@@ -45,6 +40,11 @@ func TestLint(t *testing.T) {
 				{
 					FilePath: "__test__/snake_case32.md",
 					FileName: "snake_case32.md",
+					Expect:   ModeLittleKebab,
+				},
+				{
+					FilePath: "__test__/CamelCase11.md",
+					FileName: "CamelCase11.md",
 					Expect:   ModeLittleKebab,
 				},
 			},
