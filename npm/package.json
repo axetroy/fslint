@@ -17,6 +17,7 @@
   ],
   "license": "MIT",
   "name": "@axetroy/fslint",
+  "private": false,
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
     "test": "echo \"Error: no test specified\" && exit 1"
