@@ -1,12 +1,12 @@
-[![Build Status](https://github.com/axetroy/go-cli-boilerplate/workflows/ci/badge.svg)](https://github.com/axetroy/go-cli-boilerplate/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/go-cli-boilerplate)](https://goreportcard.com/report/github.com/axetroy/go-cli-boilerplate)
-![Latest Version](https://img.shields.io/github/v/release/axetroy/go-cli-boilerplate.svg)
-![License](https://img.shields.io/github/license/axetroy/go-cli-boilerplate.svg)
-![Repo Size](https://img.shields.io/github/repo-size/axetroy/go-cli-boilerplate.svg)
+[![Build Status](https://github.com/axetroy/fslint/workflows/ci/badge.svg)](https://github.com/axetroy/fslint/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/fslint)](https://goreportcard.com/report/github.com/axetroy/fslint)
+![Latest Version](https://img.shields.io/github/v/release/axetroy/fslint.svg)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+![Repo Size](https://img.shields.io/github/repo-size/axetroy/fslint.svg)
 
-## go-cli-boilerplate
+## fslint
 
-> go-cli-boilerplate
+a cli tool for lint File System
 
 ### Usage
 
@@ -20,16 +20,16 @@ If you are using Linux/macOS. you can install it with the following command:
 
 ```shell
 # install latest version
-curl -fsSL https://raw.githubusercontent.com/axetroy/go-cli-boilerplate/master/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash
 # or install specified version
-curl -fsSL https://raw.githubusercontent.com/axetroy/go-cli-boilerplate/master/install.sh | bash -s v1.3.0
+curl -fsSL https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.1.0
 # or install from gobinaries.com
-curl -sf https://gobinaries.com/axetroy/go-cli-boilerplate@v1.3.0 | sh
+curl -sf https://gobinaries.com/axetroy/fslint@v0.1.0 | sh
 ```
 
 Or
 
-Download the executable file for your platform at [release page](https://github.com/axetroy/go-cli-boilerplate/releases)
+Download the executable file for your platform at [release page](https://github.com/axetroy/fslint/releases)
 
 Then set the environment variable.
 
@@ -43,7 +43,7 @@ export PATH="$PATH:$HOME/bin"
 then, try it out.
 
 ```bash
-go-cli-boilerplate --help
+fslint --help
 ```
 
 Finally, to use Deno correctly, you also need to set environment variables
@@ -58,8 +58,8 @@ export PATH="$PATH:$HOME/.deno/bin"
 Make sure you have `Golang@v1.15.x` installed.
 
 ```shell
-$ git clone https://github.com/axetroy/go-cli-boilerplate.git $GOPATH/src/github.com/axetroy/go-cli-boilerplate
-$ cd $GOPATH/src/github.com/axetroy/go-cli-boilerplate
+$ git clone https://github.com/axetroy/fslint.git $GOPATH/src/github.com/axetroy/fslint
+$ cd $GOPATH/src/github.com/axetroy/fslint
 $ make build
 ```
 
@@ -71,4 +71,4 @@ $ make test
 
 ### License
 
-The [MIT License](LICENSE)
+The [Anti-996 License](LICENSE)

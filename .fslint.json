@@ -1,0 +1,10 @@
+{
+  "exclude": [
+    "vendor",
+    "node_modules",
+    "README.md"
+  ],
+  "include": {
+    "./__test__/**.md": "kebab-kebab"
+  }
+}

@@ -1,22 +1,22 @@
 {
   "author": "Axetroy",
   "bin": {
-    "boilerplate": "./bin/boilerplate"
+    "fslint": "./bin/fslint"
   },
   "dependencies": {
     "download": "8.0.0",
     "progress": "2.0.3"
   },
-  "description": "a go cli boilerplate",
+  "description": "a linter for file system",
   "files": [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "bin/boilerplate",
+    "bin/fslint",
     "scripts/postinstall.js"
   ],
   "license": "MIT",
-  "name": "@axetroy/go-cli-boilerplate",
+  "name": "@axetroy/fslint",
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
     "test": "echo \"Error: no test specified\" && exit 1"
