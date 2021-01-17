@@ -11,7 +11,7 @@ import (
 	glob "github.com/ryanuber/go-glob"
 )
 
-func handleMatchFile(results *Results, selector Selector, exclude []string) error {
+func handleMatchFile(results *Results, selector Selector, exclude *[]string) error {
 	var (
 		isFolder bool = false
 	)
@@ -37,16 +37,18 @@ loop:
 	for _, file := range matchers {
 
 		// exclude
-		paths := strings.Split(file, string(filepath.Separator))
-		for _, pattern := range exclude {
-			if strings.Contains(pattern, "*") {
-				if glob.Glob(pattern, file) {
-					continue loop
-				}
-			} else {
-				for _, p := range paths {
-					if p == pattern {
+		if exclude != nil {
+			paths := strings.Split(file, string(filepath.Separator))
+			for _, pattern := range *exclude {
+				if strings.Contains(pattern, "*") {
+					if glob.Glob(pattern, file) {
 						continue loop
+					}
+				} else {
+					for _, p := range paths {
+						if p == pattern {
+							continue loop
+						}
 					}
 				}
 			}
