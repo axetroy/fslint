@@ -6,7 +6,7 @@
 
 ## fslint
 
-a cli tool for lint File System
+This is a tool for detecting file system naming styles. It is hard to imagine that there are several different styles of file naming in the same application.
 
 ### Usage
 
