@@ -67,7 +67,7 @@ func run() error {
 		return errors.WithStack(err)
 	} else {
 		if outputJSON {
-			b, err := json.Marshal(results)
+			b, err := json.Marshal(results.Values())
 
 			if err != nil {
 				return errors.WithStack(err)
@@ -77,14 +77,37 @@ func run() error {
 				return errors.WithStack(err)
 			}
 		} else {
-			for _, result := range results {
-				info := fmt.Sprintf("[fslint]: '%s' not match '%v'\n", color.YellowString(result.FilePath), color.GreenString(string(result.Expect)))
+			var (
+				errorNum = 0
+				warnNum  = 0
+			)
+
+			for _, result := range results.Values() {
+				level := color.YellowString("warn ")
+
+				switch result.Level {
+				case fslint.LevelWarn:
+					level = color.YellowString("warn ")
+					warnNum = warnNum + 1
+				case fslint.LevelError:
+					level = color.RedString("error")
+					errorNum = errorNum + 1
+				}
+
+				info := fmt.Sprintf("[fslint]: %s '%s' not match '%v'\n", level, color.BlueString(result.FilePath), color.GreenString(string(result.Expect)))
 
 				_, err := os.Stderr.WriteString(info)
 
 				if err != nil {
 					return errors.WithStack(err)
 				}
+			}
+
+			msg := fmt.Sprintf("[fslint]: finish with %s warning and %s error.\n", color.YellowString(fmt.Sprint(warnNum)), color.RedString(fmt.Sprint(errorNum)))
+			os.Stderr.WriteString(msg)
+
+			if results.ErrorCount() > 0 {
+				os.Exit(1)
 			}
 		}
 	}

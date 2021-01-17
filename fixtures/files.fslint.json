@@ -1,0 +1,10 @@
+{
+  "exclude": [],
+  "include": [
+    {
+      "file": "./fixtures/**/*.md",
+      "level": "error",
+      "pattern": "kebab-kebab"
+    }
+  ]
+}

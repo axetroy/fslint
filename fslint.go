@@ -1,8 +1,7 @@
 package fslint
 
 import (
-	"encoding/json"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -12,58 +11,129 @@ import (
 	glob "github.com/ryanuber/go-glob"
 )
 
-type Mode string
+func handleMatchFile(results *Results, selector Selector, exclude []string) error {
+	var (
+		isFolder bool = false
+	)
 
-var (
-	ModeBigCamelCase    Mode = "CamelCase"
-	ModeLittleCamelCase Mode = "camelCase"
-	ModeBigKebab        Mode = "Kebab-Kebab"
-	ModeLittleKebab     Mode = "kebab-kebab"
-	ModeBigSnakeCase    Mode = "Snake_Case"
-	ModeLittleSnakeCase Mode = "snake_case"
-)
+	selectTarget := selector.File
 
-type Config struct {
-	Exclude []string        `json:"exclude"`
-	Include map[string]Mode `json:"include"`
-}
+	if selector.Folder != "" {
+		selectTarget = selector.Folder
+		isFolder = true
+	}
 
-type LintResult struct {
-	FileName string `json:"filename"`
-	FilePath string `json:"filepath"`
-	Expect   Mode   `json:"expect"`
-	Actually Mode   `json:"actually"`
-}
+	if selectTarget == "" {
+		return errors.New("missing 'file' od 'folder' file in include block")
+	}
 
-func readConfig(configFilepath string) (Config, error) {
-	var config = Config{}
-
-	b, err := ioutil.ReadFile(configFilepath)
+	matchers, err := zglob.Glob(selectTarget)
 
 	if err != nil {
-		return config, errors.WithStack(err)
+		return errors.WithStack(err)
 	}
 
-	if err = json.Unmarshal(b, &config); err != nil {
-		return config, errors.WithStack(err)
-	}
+loop:
+	for _, file := range matchers {
 
-	return config, nil
-}
+		// exclude
+		paths := strings.Split(file, string(filepath.Separator))
+		for _, pattern := range exclude {
+			if strings.Contains(pattern, "*") {
+				if glob.Glob(pattern, file) {
+					continue loop
+				}
+			} else {
+				for _, p := range paths {
+					if p == pattern {
+						continue loop
+					}
+				}
+			}
+		}
 
-func hasResultExist(results []LintResult, filepath string) bool {
-	for _, result := range results {
-		if result.FilePath == filepath {
-			return true
+		var testTarget string
+
+		if isFolder {
+			stat, err := os.Stat(file)
+
+			if err != nil {
+				return errors.WithStack(err)
+			}
+
+			if !stat.IsDir() {
+				continue
+			}
+
+			splits := strings.Split(file, "/")
+
+			testTarget = splits[len(splits)-1]
+		} else {
+			filenameWitoutExtension := filepath.Base(file)
+
+			filenameWitoutExtension = strings.TrimRight(filenameWitoutExtension, filepath.Ext(filenameWitoutExtension))
+
+			testTarget = filenameWitoutExtension
+		}
+
+		switch selector.Pattern {
+		case ModeBigCamelCase:
+			if !parser.IsCamelCase(testTarget, true) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeBigCamelCase,
+					Level:    selector.Level,
+				})
+			}
+		case ModeLittleCamelCase:
+			if !parser.IsCamelCase(testTarget, false) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeLittleCamelCase,
+					Level:    selector.Level,
+				})
+			}
+		case ModeBigKebab:
+			if !parser.IsKebab(testTarget, true) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeBigKebab,
+					Level:    selector.Level,
+				})
+			}
+		case ModeLittleKebab:
+			if !parser.IsKebab(testTarget, false) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeLittleKebab,
+					Level:    selector.Level,
+				})
+			}
+		case ModeBigSnakeCase:
+			if !parser.IsSnakeCase(testTarget, true) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeBigSnakeCase,
+					Level:    selector.Level,
+				})
+			}
+		case ModeLittleSnakeCase:
+			if !parser.IsSnakeCase(testTarget, false) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeLittleSnakeCase,
+					Level:    selector.Level,
+				})
+			}
 		}
 	}
 
-	return false
+	return nil
 }
 
-func Lint(configFilepath string) ([]LintResult, error) {
+func Lint(configFilepath string) (*Results, error) {
 	var (
-		results = make([]LintResult, 0)
+		results = NewResults()
 	)
 
 	config, err := readConfig(configFilepath)
@@ -72,103 +142,9 @@ func Lint(configFilepath string) ([]LintResult, error) {
 		return nil, errors.WithStack(err)
 	}
 
-	for pattern, mode := range config.Include {
-		matchers, err := zglob.Glob(pattern)
-
-		if err != nil {
+	for _, selector := range config.Include {
+		if err := handleMatchFile(results, selector, config.Exclude); err != nil {
 			return nil, errors.WithStack(err)
-		}
-
-	loop:
-		for _, file := range matchers {
-
-			// exclude
-			paths := strings.Split(file, string(filepath.Separator))
-			for _, pattern := range config.Exclude {
-				if strings.Contains(pattern, "*") {
-					if glob.Glob(pattern, file) {
-						continue loop
-					}
-				} else {
-					for _, p := range paths {
-						if p == pattern {
-							continue loop
-						}
-					}
-				}
-			}
-
-			filenameWithExtension := filepath.Base(file)
-			filenameWitoutExtension := filenameWithExtension
-
-			extName := filepath.Ext(filenameWitoutExtension)
-
-			if extName != "" {
-				filenameWitoutExtension = strings.TrimRight(filenameWitoutExtension, extName)
-			}
-
-			switch mode {
-			case ModeBigCamelCase:
-				if !parser.IsCamelCase(filenameWitoutExtension, true) {
-					if !hasResultExist(results, file) {
-						results = append(results, LintResult{
-							FileName: filenameWithExtension,
-							FilePath: file,
-							Expect:   ModeBigCamelCase,
-						})
-					}
-				}
-			case ModeLittleCamelCase:
-				if !parser.IsCamelCase(filenameWitoutExtension, false) {
-					if !hasResultExist(results, file) {
-						results = append(results, LintResult{
-							FileName: filenameWithExtension,
-							FilePath: file,
-							Expect:   ModeLittleCamelCase,
-						})
-					}
-				}
-			case ModeBigKebab:
-				if !parser.IsKebab(filenameWitoutExtension, true) {
-					if !hasResultExist(results, file) {
-						results = append(results, LintResult{
-							FileName: filenameWithExtension,
-							FilePath: file,
-							Expect:   ModeBigKebab,
-						})
-					}
-				}
-			case ModeLittleKebab:
-				if !parser.IsKebab(filenameWitoutExtension, false) {
-					if !hasResultExist(results, file) {
-						results = append(results, LintResult{
-							FileName: filenameWithExtension,
-							FilePath: file,
-							Expect:   ModeLittleKebab,
-						})
-					}
-				}
-			case ModeBigSnakeCase:
-				if !parser.IsSnakeCase(filenameWitoutExtension, true) {
-					if !hasResultExist(results, file) {
-						results = append(results, LintResult{
-							FileName: filenameWithExtension,
-							FilePath: file,
-							Expect:   ModeBigSnakeCase,
-						})
-					}
-				}
-			case ModeLittleSnakeCase:
-				if !parser.IsSnakeCase(filenameWitoutExtension, false) {
-					if !hasResultExist(results, file) {
-						results = append(results, LintResult{
-							FileName: filenameWithExtension,
-							FilePath: file,
-							Expect:   ModeLittleSnakeCase,
-						})
-					}
-				}
-			}
 		}
 	}
 

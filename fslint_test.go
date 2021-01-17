@@ -18,34 +18,34 @@ func TestLint(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
-				configFilepath: ".fslint.json",
+				configFilepath: "fixtures/files.fslint.json",
 			},
 			wantErr: false,
 			want: []LintResult{
 				{
-					FilePath: "__test__/Kebab-Kebab21.md",
-					FileName: "Kebab-Kebab21.md",
+					FilePath: "fixtures/files/Kebab-Kebab21.md",
 					Expect:   ModeLittleKebab,
+					Level:    LevelError,
 				},
 				{
-					FilePath: "__test__/Snake_Case31.md",
-					FileName: "Snake_Case31.md",
+					FilePath: "fixtures/files/Snake_Case31.md",
 					Expect:   ModeLittleKebab,
+					Level:    LevelError,
 				},
 				{
-					FilePath: "__test__/camelCase12.md",
-					FileName: "camelCase12.md",
+					FilePath: "fixtures/files/camelCase12.md",
 					Expect:   ModeLittleKebab,
+					Level:    LevelError,
 				},
 				{
-					FilePath: "__test__/snake_case32.md",
-					FileName: "snake_case32.md",
+					FilePath: "fixtures/files/snake_case32.md",
 					Expect:   ModeLittleKebab,
+					Level:    LevelError,
 				},
 				{
-					FilePath: "__test__/CamelCase11.md",
-					FileName: "CamelCase11.md",
+					FilePath: "fixtures/files/CamelCase11.md",
 					Expect:   ModeLittleKebab,
+					Level:    LevelError,
 				},
 			},
 		},
@@ -59,7 +59,7 @@ func TestLint(t *testing.T) {
 			}
 			for _, want := range tt.want {
 				catch := false
-				for _, g := range got {
+				for _, g := range got.Values() {
 					if g.FilePath == want.FilePath {
 						catch = true
 						if !reflect.DeepEqual(g, want) {

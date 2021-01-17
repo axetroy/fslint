@@ -36,7 +36,6 @@ func IsKebab(str string, isBig bool) bool {
 			if !isBig && char.Index() == 0 {
 				return false
 			}
-			// println(char.Val())
 			if prev != nil && !prev.Is(char_state.CharTypeKebab) {
 				return false
 			}
