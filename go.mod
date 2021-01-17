@@ -8,4 +8,5 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/ryanuber/go-glob v1.0.0
 	github.com/stretchr/testify v1.7.0
+	github.com/yosuke-furukawa/json5 v0.1.1
 )

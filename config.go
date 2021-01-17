@@ -1,10 +1,10 @@
 package fslint
 
 import (
-	"encoding/json"
 	"io/ioutil"
 
 	"github.com/pkg/errors"
+	"github.com/yosuke-furukawa/json5/encoding/json5"
 )
 
 type Mode string
@@ -43,7 +43,7 @@ func readConfig(configFilepath string) (Config, error) {
 		return config, errors.WithStack(err)
 	}
 
-	if err = json.Unmarshal(b, &config); err != nil {
+	if err = json5.Unmarshal(b, &config); err != nil {
 		return config, errors.WithStack(err)
 	}
 

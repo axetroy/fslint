@@ -2,7 +2,7 @@
   "exclude": [],
   "include": [
     {
-      "folder": "./fixtures/**/*",
+      "folder": "./fixtures/**/*", // lint for folder
       "level": "error",
       "pattern": "kebab-kebab"
     }

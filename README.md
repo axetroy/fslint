@@ -16,7 +16,7 @@ $ fslint --config=.fslint.json
 
 `.fslintrc.json` is a JSON file look like this:
 
-```json
+```json5
 {
   "exclude": ["vendor", "node_modules", "bin"],
   "include": [

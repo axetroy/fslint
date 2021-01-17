@@ -2,7 +2,7 @@
   "exclude": [],
   "include": [
     {
-      "file": "./fixtures/**/*.md",
+      "file": "./fixtures/**/*.md", // lint for files
       "level": "error",
       "pattern": "kebab-kebab"
     }

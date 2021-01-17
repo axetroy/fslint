@@ -22,6 +22,10 @@ github.com/ryanuber/go-glob
 # github.com/stretchr/testify v1.7.0
 ## explicit
 github.com/stretchr/testify/assert
+# github.com/yosuke-furukawa/json5 v0.1.1
+## explicit
+github.com/yosuke-furukawa/json5
+github.com/yosuke-furukawa/json5/encoding/json5
 # golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae
 golang.org/x/sys/unix
 # gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
