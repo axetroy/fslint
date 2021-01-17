@@ -29,7 +29,7 @@ ARGUMENTS:
 OPTIONS:
   --help        Print help information.
   --version     Print version information.
-  --config      Specify ‘.fslint.json’. defaults to '.fslint.json'.
+  --config      Specify ‘.fslintrc.json’. defaults to '.fslintrc.json'.
   --json        Output the lint result as JSON
 
 SOURCE CODE:
@@ -44,7 +44,7 @@ func run() error {
 		outputJSON  bool
 	)
 
-	flag.StringVar(&configPath, "config", ".fslint.json", "The config of fslint")
+	flag.StringVar(&configPath, "config", ".fslintrc.json", "The config of fslint")
 	flag.BoolVar(&outputJSON, "json", false, "Output the lint result as JSON")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
 	flag.BoolVar(&showVersion, "version", false, "Print version information")

@@ -1,5 +1,7 @@
 package fslint
 
+import "sort"
+
 type LintResult struct {
 	FilePath string `json:"filepath"`
 	Expect   Mode   `json:"expect"`
@@ -56,5 +58,9 @@ func (r *Results) ErrorCount() int {
 }
 
 func (r *Results) Values() []LintResult {
+	sort.SliceStable(r.values, func(i, j int) bool {
+		return r.values[i].FilePath < r.values[j].FilePath
+	})
+
 	return r.values
 }

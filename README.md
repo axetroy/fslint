@@ -14,19 +14,19 @@ a cli tool for lint File System
 $ fslint --config=.fslint.json
 ```
 
-`.fslint.json` is a JSON file look like this:
+`.fslintrc.json` is a JSON file look like this:
 
 ```json
 {
   "exclude": ["vendor", "node_modules", "bin"],
   "include": [
     {
-      "file": "./src/**/*.vue",
+      "file": "./src/**/*.vue", // lint for file
       "level": "error",
       "pattern": "CamelCase"
     },
     {
-      "folder": "./src/**/*",
+      "folder": "./src/**/*", // lint for folder
       "level": "error",
       "pattern": "kebab-kebab"
     }

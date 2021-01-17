@@ -1,8 +1,9 @@
 package fslint
 
 import (
-	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestLint(t *testing.T) {
@@ -16,12 +17,17 @@ func TestLint(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "basic",
+			name: "files",
 			args: args{
-				configFilepath: "fixtures/files.fslint.json",
+				configFilepath: "fixtures/files.fslintrc.json",
 			},
 			wantErr: false,
 			want: []LintResult{
+				{
+					FilePath: "fixtures/files/CamelCase11.md",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
 				{
 					FilePath: "fixtures/files/Kebab-Kebab21.md",
 					Expect:   ModeLittleKebab,
@@ -42,8 +48,22 @@ func TestLint(t *testing.T) {
 					Expect:   ModeLittleKebab,
 					Level:    LevelError,
 				},
+			},
+		},
+		{
+			name: "folder",
+			args: args{
+				configFilepath: "fixtures/folder.fslintrc.json",
+			},
+			wantErr: false,
+			want: []LintResult{
 				{
-					FilePath: "fixtures/files/CamelCase11.md",
+					FilePath: "fixtures/TestFolder",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/TestFolder/Nest_Folder",
 					Expect:   ModeLittleKebab,
 					Level:    LevelError,
 				},
@@ -57,21 +77,7 @@ func TestLint(t *testing.T) {
 				t.Errorf("Lint() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			for _, want := range tt.want {
-				catch := false
-				for _, g := range got.Values() {
-					if g.FilePath == want.FilePath {
-						catch = true
-						if !reflect.DeepEqual(g, want) {
-							t.Errorf("Lint() = %v, want %v", g, want)
-						}
-					}
-				}
-				if !reflect.DeepEqual(catch, true) {
-					t.Errorf("Lint() = %v, want %v", got, tt.want)
-				}
-			}
-
+			assert.Equal(t, tt.want, got.Values(), tt.name)
 		})
 	}
 }
