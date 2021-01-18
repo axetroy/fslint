@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const os = require("os");
 const download = require("download");
 const ProgressBar = require("progress");
@@ -52,7 +53,9 @@ async function install(version) {
     total: 0,
   });
 
-  await download(url, path.join(__dirname, "..", "bin"), {
+  const binDir = path.join(__dirname, "..", "bin");
+
+  await download(url, binDir, {
     extract: true,
   }).on("response", (res) => {
     bar.total = res.headers["content-length"];
@@ -61,6 +64,10 @@ async function install(version) {
       console.error("error");
     });
   });
+
+  if (os.platform() === "win32") {
+    fs.unlinkSync(path.join(binDir, "fslint"));
+  }
 }
 
 install("v" + pkg.version).catch((err) => {
