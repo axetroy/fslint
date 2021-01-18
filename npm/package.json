@@ -1,8 +1,7 @@
 {
   "author": "Axetroy",
   "bin": {
-    "fslint": "./bin/fslint",
-    "fslint.exe": "./bin/fslint.exe"
+    "fslint": "./bin/fslint"
   },
   "dependencies": {
     "download": "8.0.0",
