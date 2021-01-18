@@ -64,10 +64,6 @@ async function install(version) {
       console.error("error");
     });
   });
-
-  if (os.platform() === "win32") {
-    fs.unlinkSync(path.join(binDir, "fslint"));
-  }
 }
 
 install("v" + pkg.version).catch((err) => {
