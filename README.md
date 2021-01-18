@@ -11,7 +11,7 @@ This is a tool for detecting file system naming styles. It is hard to imagine th
 ### Usage
 
 ```bash
-$ fslint --config=.fslint.json
+$ fslint --config=.fslintrc.json
 ```
 
 `.fslintrc.json` is a JSON file look like this:
