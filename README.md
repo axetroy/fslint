@@ -45,6 +45,12 @@ $ fslint --config=.fslint.json
 
 ### Installation
 
+If you have installed nodejs, you can install it via npm
+
+```bash
+npm install @axetroy/fslint -g
+```
+
 If you are using Linux/macOS. you can install it with the following command:
 
 ```shell
@@ -73,13 +79,6 @@ then, try it out.
 
 ```bash
 fslint --help
-```
-
-Finally, to use Deno correctly, you also need to set environment variables
-
-```bash
-# ~/.bash_profile
-export PATH="$PATH:$HOME/.deno/bin"
 ```
 
 ### Build from source code
