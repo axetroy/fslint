@@ -18,7 +18,7 @@ var (
 
 	red    = color.FgRed.Render
 	green  = color.FgGreen.Render
-	blue   = color.FgBlue.Render
+	blue   = color.FgLightMagenta.Render
 	yellow = color.FgYellow.Render
 )
 
@@ -99,7 +99,7 @@ func run() error {
 					errorNum = errorNum + 1
 				}
 
-				color.Fprintf(os.Stderr, "[fslint]: %s '%s' not match '%v'\n", level, blue(result.FilePath), green(result.Expect))
+				color.Fprintf(os.Stderr, "[fslint]: %s '%s' not match with pattern '%v'\n", level, blue(result.FilePath), green(result.Expect))
 
 				if err != nil {
 					return errors.WithStack(err)

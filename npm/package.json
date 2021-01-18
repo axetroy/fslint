@@ -15,7 +15,7 @@
     "bin/fslint",
     "scripts/postinstall.js"
   ],
-  "license": "MIT",
+  "license": "Anti-996",
   "name": "@axetroy/fslint",
   "private": false,
   "scripts": {
