@@ -13,6 +13,10 @@ const ps = spawn(bin, argv.slice(2), {
   stdio: "inherit",
 });
 
+ps.on("error", (code) => {
+  process.exit(code);
+});
+
 ps.on("exit", (code) => {
   process.exit(code);
 });
