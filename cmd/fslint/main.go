@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/axetroy/fslint"
-	"github.com/fatih/color"
+	"github.com/gookit/color"
 	"github.com/pkg/errors"
 )
 
@@ -15,6 +15,11 @@ var (
 	version = "dev"
 	commit  = "none"
 	date    = "unknown"
+
+	red    = color.FgRed.Render
+	green  = color.FgGreen.Render
+	blue   = color.FgBlue.Render
+	yellow = color.FgYellow.Render
 )
 
 func printHelp() {
@@ -83,18 +88,18 @@ func run() error {
 			)
 
 			for _, result := range results.Values() {
-				level := color.YellowString("warn ")
+				level := "warn "
 
 				switch result.Level {
 				case fslint.LevelWarn:
-					level = color.YellowString("warn ")
+					level = yellow("warn ")
 					warnNum = warnNum + 1
 				case fslint.LevelError:
-					level = color.RedString("error")
+					level = red("error")
 					errorNum = errorNum + 1
 				}
 
-				info := fmt.Sprintf("[fslint]: %s '%s' not match '%v'\n", level, color.BlueString(result.FilePath), color.GreenString(string(result.Expect)))
+				info := color.Sprintf("[fslint]: %s '%s' not match '%v'\n", level, blue(result.FilePath), green(result.Expect))
 
 				_, err := os.Stderr.WriteString(info)
 
@@ -103,7 +108,7 @@ func run() error {
 				}
 			}
 
-			msg := fmt.Sprintf("[fslint]: finish with %s warning and %s error.\n", color.YellowString(fmt.Sprint(warnNum)), color.RedString(fmt.Sprint(errorNum)))
+			msg := color.Sprintf("[fslint]: finish with %s warning and %s error.\n", yellow(warnNum), red(errorNum))
 			os.Stderr.WriteString(msg)
 
 			if results.ErrorCount() > 0 {

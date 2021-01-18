@@ -15,6 +15,9 @@ github.com/go-playground/universal-translator
 ## explicit
 github.com/go-playground/validator/v10
 github.com/go-playground/validator/v10/translations/en
+# github.com/gookit/color v1.3.6
+## explicit
+github.com/gookit/color
 # github.com/leodido/go-urn v1.2.0
 github.com/leodido/go-urn
 # github.com/mattn/go-colorable v0.1.8
