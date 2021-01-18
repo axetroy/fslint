@@ -99,17 +99,14 @@ func run() error {
 					errorNum = errorNum + 1
 				}
 
-				info := color.Sprintf("[fslint]: %s '%s' not match '%v'\n", level, blue(result.FilePath), green(result.Expect))
-
-				_, err := os.Stderr.WriteString(info)
+				color.Fprintf(os.Stderr, "[fslint]: %s '%s' not match '%v'\n", level, blue(result.FilePath), green(result.Expect))
 
 				if err != nil {
 					return errors.WithStack(err)
 				}
 			}
 
-			msg := color.Sprintf("[fslint]: finish with %s warning and %s error.\n", yellow(warnNum), red(errorNum))
-			os.Stderr.WriteString(msg)
+			color.Fprintf(os.Stderr, "[fslint]: finish with %s warning and %s error.\n", yellow(warnNum), red(errorNum))
 
 			if results.ErrorCount() > 0 {
 				os.Exit(1)
