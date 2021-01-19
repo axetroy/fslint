@@ -23,7 +23,8 @@ $ fslint --config=.fslintrc.json
     {
       "file": "./src/**/*.vue", // lint for file
       "level": "error",
-      "pattern": "CamelCase"
+      "pattern": "CamelCase",
+      "ignore": ["index"] // ignore index.vue in this rule
     },
     {
       "folder": "./src/**/*", // lint for folder

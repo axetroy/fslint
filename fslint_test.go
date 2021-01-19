@@ -62,6 +62,55 @@ func TestLint(t *testing.T) {
 					Expect:   ModeLittleKebab,
 					Level:    LevelError,
 				},
+
+				{
+					FilePath: "fixtures/TestFolder/Nest_Folder",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/TestFolder/ignore_folder",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
+			},
+		},
+		{
+			name: "ignore files",
+			args: args{
+				configFilepath: "fixtures/ignore-files.fslintrc.json",
+			},
+			wantErr: false,
+			want: []LintResult{
+				{
+					FilePath: "fixtures/files/CamelCase11.md",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/files/Kebab-Kebab21.md",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/files/camelCase12.md",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
+			},
+		},
+		{
+			name: "ignore folder",
+			args: args{
+				configFilepath: "fixtures/ignore-folder.fslintrc.json",
+			},
+			wantErr: false,
+			want: []LintResult{
+				{
+					FilePath: "fixtures/TestFolder",
+					Expect:   ModeLittleKebab,
+					Level:    LevelError,
+				},
 				{
 					FilePath: "fixtures/TestFolder/Nest_Folder",
 					Expect:   ModeLittleKebab,

@@ -36,10 +36,11 @@ type Config struct {
 }
 
 type Selector struct {
-	File    string `json:"file" validate:"required_if_field_empty=Folder"`
-	Folder  string `json:"folder" validate:"required_if_field_empty=File"`
-	Pattern Mode   `json:"pattern" validate:"required,oneof=CamelCase camelCase Kebab-Kebab kebab-kebab Snake_Case snake_case"`
-	Level   Level  `json:"level" validate:"oneof=warn error,required"`
+	File    string   `json:"file" validate:"required_if_field_empty=Folder"`
+	Folder  string   `json:"folder" validate:"required_if_field_empty=File"`
+	Pattern Mode     `json:"pattern" validate:"required,oneof=CamelCase camelCase Kebab-Kebab kebab-kebab Snake_Case snake_case"`
+	Level   Level    `json:"level" validate:"oneof=warn error,required"`
+	Ignore  []string `json:"ignore"`
 }
 
 func requiredIfFieldNotEmpty(field validator.FieldLevel) bool {
@@ -116,17 +117,14 @@ func init() {
 	}
 }
 
-func readConfig(configFilepath string) (Config, error) {
-	var config = Config{}
+func NewConfig(content []byte) (*Config, error) {
+	var (
+		config = Config{}
+		err    error
+	)
 
-	b, err := ioutil.ReadFile(configFilepath)
-
-	if err != nil {
-		return config, errors.WithStack(err)
-	}
-
-	if err = json5.Unmarshal(b, &config); err != nil {
-		return config, errors.WithStack(err)
+	if err = json5.Unmarshal(content, &config); err != nil {
+		return nil, errors.WithStack(err)
 	}
 
 	err = validate.Struct(config)
@@ -143,8 +141,18 @@ func readConfig(configFilepath string) (Config, error) {
 			msg = append(msg, color.RedString("[config]: "+e))
 		}
 
-		return config, errors.New(strings.Join(msg, "\n"))
+		return nil, errors.New(strings.Join(msg, "\n"))
 	}
 
-	return config, nil
+	return &config, nil
+}
+
+func readConfig(configFilepath string) (*Config, error) {
+	b, err := ioutil.ReadFile(configFilepath)
+
+	if err != nil {
+		return nil, errors.WithStack(err)
+	}
+
+	return NewConfig(b)
 }

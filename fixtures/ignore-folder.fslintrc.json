@@ -1,0 +1,13 @@
+{
+  "exclude": [],
+  "include": [
+    {
+      "folder": "./fixtures/**/*",
+      "ignore": [
+        "**/ignore_*"
+      ],
+      "level": "error",
+      "pattern": "kebab-kebab"
+    }
+  ]
+}

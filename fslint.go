@@ -54,6 +54,24 @@ loop:
 			}
 		}
 
+		// ignore for rules
+		if selector.Ignore != nil {
+			paths := strings.Split(file, string(filepath.Separator))
+			for _, pattern := range selector.Ignore {
+				if strings.Contains(pattern, "*") {
+					if glob.Glob(pattern, file) {
+						continue loop
+					}
+				} else {
+					for _, p := range paths {
+						if p == pattern {
+							continue loop
+						}
+					}
+				}
+			}
+		}
+
 		var testTarget string
 
 		if isFolder {
