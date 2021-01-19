@@ -53,7 +53,7 @@ async function install(version) {
     total: 0,
   });
 
-  const binDir = path.join(__dirname, "..", "bin");
+  const binDir = path.join(__dirname, "..", "download");
 
   await download(url, binDir, {
     extract: true,

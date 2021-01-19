@@ -34,6 +34,12 @@ func (c *Char) Is(typeIota int) bool {
 	}
 }
 
+func (c *Char) IsCommonString() bool {
+	reg := regexp.MustCompile(`[a-zA-Z0-9]`)
+
+	return reg.MatchString(c.Val())
+}
+
 func (c *Char) Val() string {
 	return c.val
 }

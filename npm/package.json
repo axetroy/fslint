@@ -13,7 +13,8 @@
     "CHANGELOG.md",
     "LICENSE",
     "bin/fslint",
-    "scripts/postinstall.js"
+    "scripts/postinstall.js",
+    "download/.gitkeep"
   ],
   "license": "Anti-996",
   "name": "@axetroy/fslint",
