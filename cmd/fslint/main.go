@@ -47,10 +47,12 @@ func run() error {
 		showVersion bool
 		configPath  string
 		outputJSON  bool
+		noColor     bool
 	)
 
 	flag.StringVar(&configPath, "config", ".fslintrc.json", "The config of fslint")
 	flag.BoolVar(&outputJSON, "json", false, "Output the lint result as JSON")
+	flag.BoolVar(&noColor, "no-color", false, "disabled color for printing")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
 	flag.BoolVar(&showVersion, "version", false, "Print version information")
 
@@ -66,6 +68,12 @@ func run() error {
 	if showVersion {
 		println(fmt.Sprintf("%s %s %s", version, commit, date))
 		os.Exit(0)
+	}
+
+	if color.SupportColor() {
+		color.Enable = !noColor
+	} else {
+		color.Enable = false
 	}
 
 	if results, err := fslint.Lint(configPath); err != nil {
