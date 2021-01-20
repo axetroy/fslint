@@ -118,6 +118,45 @@ func TestLint(t *testing.T) {
 				},
 			},
 		},
+		{
+			name: "files",
+			args: args{
+				configFilepath: "fixtures/regexp.fslintrc.json",
+			},
+			wantErr: false,
+			want: []LintResult{
+				{
+					FilePath: "fixtures/files/CamelCase11.md",
+					Expect:   ModeRegExp,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/files/Kebab-Kebab21.md",
+					Expect:   ModeRegExp,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/files/Snake_Case31.md",
+					Expect:   ModeRegExp,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/files/camelCase12.md",
+					Expect:   ModeRegExp,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/files/kebab-kebab22.md",
+					Expect:   ModeRegExp,
+					Level:    LevelError,
+				},
+				{
+					FilePath: "fixtures/files/snake_case32.md",
+					Expect:   ModeRegExp,
+					Level:    LevelError,
+				},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

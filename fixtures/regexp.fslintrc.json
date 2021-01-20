@@ -4,7 +4,7 @@
     {
       "file": "./fixtures/**/*.md",
       "level": "error",
-      "pattern": "kebab-kebab"
+      "pattern": "/^[a-z]+-[a-z]+\\.md$/"
     }
   ]
 }

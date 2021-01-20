@@ -3,6 +3,7 @@ package fslint
 import (
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/axetroy/fslint/parser"
@@ -133,6 +134,14 @@ loop:
 					Level:    selector.Level,
 				})
 			}
+		case ModeAllUppercaseKebab:
+			if !parser.IsUppercaseWithUppercase(testTarget) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeAllUppercaseKebab,
+					Level:    selector.Level,
+				})
+			}
 		case ModeBigSnakeCase:
 			if !parser.IsSnakeCase(testTarget, true) {
 				results.Append(LintResult{
@@ -149,7 +158,58 @@ loop:
 					Level:    selector.Level,
 				})
 			}
+		case ModeAllUppercaseSnakeCase:
+			if !parser.IsUppercaseUnderscoreUppercase(testTarget) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeAllUppercaseSnakeCase,
+					Level:    selector.Level,
+				})
+			}
+		case ModeBigDot:
+			if !parser.IsDotDot(testTarget, true) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeBigDot,
+					Level:    selector.Level,
+				})
+			}
+		case ModeLittleDot:
+			if !parser.IsDotDot(testTarget, false) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeLittleDot,
+					Level:    selector.Level,
+				})
+			}
+		case ModeAllUppercaseDot:
+			if !parser.IsUppercaseDotUppercase(testTarget) {
+				results.Append(LintResult{
+					FilePath: file,
+					Expect:   ModeAllUppercaseDot,
+					Level:    selector.Level,
+				})
+			}
+		default:
+			if isRegExpStr(string(selector.Pattern)) {
+				val := strings.TrimLeft(string(selector.Pattern), "/")
+				val = strings.TrimRight(val, "/")
+				reg, err := regexp.Compile(val)
+
+				if err != nil {
+					return errors.WithStack(err)
+				}
+
+				if !reg.MatchString(testTarget) {
+					results.Append(LintResult{
+						FilePath: file,
+						Expect:   ModeRegExp,
+						Level:    selector.Level,
+					})
+				}
+			}
 		}
+
 	}
 
 	return nil
