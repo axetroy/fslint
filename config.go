@@ -38,7 +38,7 @@ type Config struct {
 type Selector struct {
 	File    string   `json:"file" validate:"required_if_field_empty=Folder"`
 	Folder  string   `json:"folder" validate:"required_if_field_empty=File"`
-	Pattern Mode     `json:"pattern" validate:"required,oneof=CamelCase camelCase Kebab-Kebab kebab-kebab Snake_Case snake_case dot.dot Dot.Dot"`
+	Pattern Mode     `json:"pattern" validate:"required,oneof=CamelCase camelCase Kebab-Kebab kebab-kebab KEBAB-KEBAB Snake_Case snake_case SNAKE_CASE dot.dot Dot.Dot DOT.DOT"`
 	Level   Level    `json:"level" validate:"oneof=warn error,required"`
 	Ignore  []string `json:"ignore"`
 }

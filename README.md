@@ -47,7 +47,7 @@ $ fslint --config=.fslintrc.json
 | **SNAKE_CASE**  | All characters are uppercase and concatenated by symbols `_`       |           |
 | **dot.dot**     | Start with uppercase, with `.` as the delimiter style              |           |
 | **Dot.Dot**     | Start with lowercase, with `.` as the delimiter style              |           |
-| **DOT.DOT**     | TODO                                                               |           |
+| **DOT.DOT**     | All characters are uppercase and concatenated by symbols `.`       |           |
 
 ### Installation
 
