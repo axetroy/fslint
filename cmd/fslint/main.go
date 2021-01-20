@@ -36,6 +36,7 @@ OPTIONS:
   --version     Print version information.
   --config      Specify ‘.fslintrc.json’. defaults to '.fslintrc.json'.
   --json        Output the lint result as JSON
+  --no-color    Disabled color for printing
 
 SOURCE CODE:
   https://github.com/axetroy/fslint`)

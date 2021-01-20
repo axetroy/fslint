@@ -7,4 +7,5 @@ const (
 	CharTypeNumber            // number
 	CharTypeKebab             // -
 	CharTypeUnderscore        // _
+	CharTypeDot               // .
 )

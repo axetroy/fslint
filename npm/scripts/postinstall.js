@@ -64,6 +64,16 @@ async function install(version) {
       console.error("error");
     });
   });
+
+  // make it become a executable file
+  const suffix = os.platform() === "win32" ? ".exe" : "";
+  const binFile = path.join(binDir, "fslint" + suffix);
+  fs.chmod(binFile, 0x755, (err) => {
+    // ignore error
+    if (err) {
+      console.log("This error will be ignore.");
+    }
+  });
 }
 
 install("v" + pkg.version).catch((err) => {
