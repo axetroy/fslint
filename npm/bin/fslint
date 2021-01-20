@@ -14,7 +14,7 @@ if (!fs.existsSync(bin)) {
   console.error(
     `fslint have been download. please run the following command 'node node_modules/@axetroy/fslint/scripts/postinstall.js'`
   );
-  os.exit(1);
+  process.exit(1);
 }
 
 const ps = spawn(bin, argv.slice(2), {
