@@ -16,7 +16,7 @@ $ fslint --config=.fslintrc.json
 
 `.fslintrc.json` is a JSON file look like this:
 
-```json5
+```json with comment
 {
   "exclude": ["vendor", "node_modules", "bin"],
   "include": [
@@ -35,14 +35,19 @@ $ fslint --config=.fslintrc.json
 }
 ```
 
-| Pattern         | Description                                                        | Example               | Recommend |
-| --------------- | ------------------------------------------------------------------ | --------------------- | --------- |
-| **CamelCase**   | Camel case with initial capital                                    | `HelloWorld`/`GoTo`   | Yes       |
-| **camelCase**   | Camel case with lowercase initials                                 | `helloWorld`/`goTo`   |           |
-| **Kebab-Kebab** | Uppercase letters and concatenated by symbols `-`                  | `Hello-World`/`Go-To` |           |
-| **kebab-kebab** | Lowercase letters and concatenated by symbols `-`                  | `hello-world`/`go-to` | Yes       |
-| **Snake_Case**  | Uppercase letters snake case style and concatenated by symbols `_` | `Hello_World`/`Go_To` |           |
-| **snake_case**  | Lowercase letters snake case style and concatenated by symbols `_` | `hello_world`/`go_to` | Yes       |
+| Pattern         | Description                                                        | Recommend |
+| --------------- | ------------------------------------------------------------------ | --------- |
+| **CamelCase**   | Camel case with initial capital                                    | Yes       |
+| **camelCase**   | Camel case with lowercase initials                                 |           |
+| **Kebab-Kebab** | Uppercase letters and concatenated by symbols `-`                  |           |
+| **kebab-kebab** | Lowercase letters and concatenated by symbols `-`                  | Yes       |
+| **Snake_Case**  | Uppercase letters snake case style and concatenated by symbols `_` |           |
+| **snake_case**  | Lowercase letters snake case style and concatenated by symbols `_` | Yes       |
+| **dot.dot**     | TODO                                                               |           |
+| **Dot.Dot**     | TODO                                                               |           |
+| **UPPER.UPPER** | TODO                                                               |           |
+| **UPPER_UPPER** | TODO                                                               |           |
+| **UPPER-UPPER** | TODO                                                               |           |
 
 ### Installation
 
