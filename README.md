@@ -41,7 +41,7 @@ $ fslint --config=.fslintrc.json
 | **camelCase**   | Camel case with lowercase initials                                 |           |
 | **Kebab-Kebab** | Uppercase letters and concatenated by symbols `-`                  |           |
 | **kebab-kebab** | Lowercase letters and concatenated by symbols `-`                  | Yes       |
-| **KEBAB-KEBAB** | TODO                                                               |           |
+| **KEBAB-KEBAB** | All characters are Uppercase, with `-` as the separator style      |           |
 | **Snake_Case**  | Uppercase letters snake case style and concatenated by symbols `_` |           |
 | **snake_case**  | Lowercase letters snake case style and concatenated by symbols `_` | Yes       |
 | **SNAKE_CASE**  | Lowercase letters snake case style and concatenated by symbols `_` |           |

@@ -69,6 +69,10 @@ func (s *State) Index() int {
 	return int(s.index)
 }
 
+func (s *State) Len() int {
+	return len(s.char)
+}
+
 func NewState(char string) State {
 	return State{
 		char:  char,
