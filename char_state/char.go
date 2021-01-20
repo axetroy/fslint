@@ -6,8 +6,12 @@ import (
 )
 
 var (
-	numRegExp = regexp.MustCompile(`\d`)
+	numRegExp = regexp.MustCompile(`\d+`)
 )
+
+func isNumberic(str string) bool {
+	return numRegExp.MatchString(str)
+}
 
 type Char struct {
 	allString string
@@ -24,11 +28,13 @@ func (c *Char) Is(typeIota int) bool {
 	case CharTypeUpperCase:
 		return unicode.IsUpper(r)
 	case CharTypeNumber:
-		return numRegExp.MatchString(c.Val())
+		return isNumberic(c.Val())
 	case CharTypeKebab:
 		return c.Val() == "-"
 	case CharTypeUnderscore:
 		return c.Val() == "_"
+	case CharTypeDot:
+		return c.Val() == "."
 	default:
 		return false
 	}

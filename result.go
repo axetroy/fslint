@@ -5,7 +5,6 @@ import "sort"
 type LintResult struct {
 	FilePath string `json:"filepath"`
 	Expect   Mode   `json:"expect"`
-	Actually Mode   `json:"actually"`
 	Level    Level  `json:"level"`
 }
 
