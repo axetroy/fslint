@@ -72,21 +72,6 @@ Or
 
 Download the executable file for your platform at [release page](https://github.com/axetroy/fslint/releases)
 
-Then set the environment variable.
-
-eg, the executable file is in the `~/bin` directory.
-
-```bash
-# ~/.bash_profile
-export PATH="$PATH:$HOME/bin"
-```
-
-then, try it out.
-
-```bash
-fslint --help
-```
-
 ### Build from source code
 
 Make sure you have `Golang@v1.15.x` installed.
