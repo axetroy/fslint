@@ -1,14 +1,17 @@
-test:
-	go test --cover -covermode=count -coverprofile=coverage.out ./...
+.PHONY: build test lint format
 
-build:
-	goreleaser release --snapshot --rm-dist --skip-publish
+.DEFAULT:
+build: test
+	@goreleaser release --snapshot --rm-dist --skip-publish
+
+test:
+	@go test --cover -covermode=count -coverprofile=coverage.out ./...
 
 lint:
-	golangci-lint run ./... -v
+	@golangci-lint run ./... -v
 
+.ONESHELL:
 format:
-	go fmt ./...
-
-format-check:
-	gofmt -l **/*.go
+	@gofmt -l **/*.go
+	@gofmt -l *.go
+	@go fmt ./...

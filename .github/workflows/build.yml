@@ -38,7 +38,7 @@ jobs:
           # only-new-issues: true
 
       - name: Format
-        run: make format-check
+        run: make format
 
       - name: Test
         run: |
