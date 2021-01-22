@@ -21,6 +21,22 @@ const ps = spawn(bin, argv.slice(2), {
   stdio: "inherit",
 });
 
+process.on("beforeExit", () => {
+  ps.kill();
+});
+
+process.on("SIGKILL", () => {
+  ps.kill("SIGKILL");
+});
+
+process.on("SIGINT", () => {
+  ps.kill("SIGINT");
+});
+
+process.on("SIGSTOP", () => {
+  ps.kill("SIGSTOP");
+});
+
 ps.on("error", (code) => {
   process.exit(code);
 });
