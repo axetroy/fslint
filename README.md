@@ -1,3 +1,5 @@
+English | [中文简体](README_zh-CN.md)
+
 [![Build Status](https://github.com/axetroy/fslint/workflows/ci/badge.svg)](https://github.com/axetroy/fslint/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/fslint)](https://goreportcard.com/report/github.com/axetroy/fslint)
 ![Latest Version](https://img.shields.io/github/v/release/axetroy/fslint.svg)
@@ -18,37 +20,37 @@ $ fslint --config=.fslintrc.json
 
 ```json5
 {
-  "exclude": ["vendor", "node_modules", "bin"],
-  "include": [
+  exclude: ["vendor", "node_modules", "bin"],
+  include: [
     {
-      "file": "./src/**/*.vue", // lint for file
-      "level": "error",
-      "pattern": "CamelCase",
-      "ignore": ["index.vue"] // ignore index.vue in this rule
+      file: "./src/**/*.vue", // lint for file
+      level: "error",
+      pattern: "CamelCase",
+      ignore: ["index.vue"], // ignore index.vue in this rule
     },
     {
-      "folder": "./src/**/*", // lint for folder
-      "level": "error",
-      "pattern": "kebab-kebab"
-    }
-  ]
+      folder: "./src/**/*", // lint for folder
+      level: "error",
+      pattern: "kebab-kebab",
+    },
+  ],
 }
 ```
 
-| Pattern          | Description                                                                         | Recommend |
-| ---------------- | ----------------------------------------------------------------------------------- | --------- |
-| **CamelCase**    | Camel case with initial capital                                                     | Yes       |
-| **camelCase**    | Camel case with lowercase initials                                                  |           |
-| **Kebab-Kebab**  | Uppercase letters and concatenated by symbols `-`                                   |           |
-| **kebab-kebab**  | Lowercase letters and concatenated by symbols `-`                                   | Yes       |
-| **KEBAB-KEBAB**  | All characters are uppercase and concatenated by symbols `-`                        |           |
-| **Snake_Case**   | Uppercase letters snake case style and concatenated by symbols `_`                  |           |
-| **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_`                  | Yes       |
-| **SNAKE_CASE**   | All characters are uppercase and concatenated by symbols `_`                        |           |
-| **dot.dot**      | Start with uppercase, with `.` as the delimiter style                               |           |
-| **Dot.Dot**      | Start with lowercase, with `.` as the delimiter style                               |           |
-| **DOT.DOT**      | All characters are uppercase and concatenated by symbols `.`                        |           |
-| **/\<regexp\>/** | A string beginning with `/` and ending with `/` is regarded as a regular expression |           |
+| Pattern          | Description                                                                | Recommend |
+| ---------------- | -------------------------------------------------------------------------- | --------- |
+| **CamelCase**    | Camel case with initial capital                                            | Yes       |
+| **camelCase**    | Camel case with lowercase initials                                         |           |
+| **Kebab-Kebab**  | Uppercase letters and concatenated by symbols `-`                          |           |
+| **kebab-kebab**  | Lowercase letters and concatenated by symbols `-`                          | Yes       |
+| **KEBAB-KEBAB**  | All characters are uppercase and concatenated by symbols `-`               |           |
+| **Snake_Case**   | Uppercase letters snake case style and concatenated by symbols `_`         |           |
+| **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_`         | Yes       |
+| **SNAKE_CASE**   | All characters are uppercase and concatenated by symbols `_`               |           |
+| **Dot.Dot**      | Start with lowercase, with `.` as the delimiter style                      |           |
+| **dot.dot**      | Start with uppercase, with `.` as the delimiter style                      |           |
+| **DOT.DOT**      | All characters are uppercase and concatenated by symbols `.`               |           |
+| **/\<regexp\>/** | A string beginning and ending with `/` is regarded as a regular expression |           |
 
 ### Installation
 
@@ -69,19 +71,7 @@ curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetro
 curl -sf https://gobinaries.com/axetroy/fslint@v0.1.0 | sh
 ```
 
-Or
-
-Download the executable file for your platform at [release page](https://github.com/axetroy/fslint/releases)
-
-### Build from source code
-
-Make sure you have `Golang@v1.15.x` installed.
-
-```shell
-$ git clone https://github.com/axetroy/fslint.git $GOPATH/src/github.com/axetroy/fslint
-$ cd $GOPATH/src/github.com/axetroy/fslint
-$ make build
-```
+Or Download the executable file for your platform at [release page](https://github.com/axetroy/fslint/releases)
 
 ### Test
 

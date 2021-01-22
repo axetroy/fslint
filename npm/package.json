@@ -10,8 +10,10 @@
   "description": "a linter for file system",
   "files": [
     "README.md",
+    "README_zh-CN.md",
     "CHANGELOG.md",
     "LICENSE",
+    "LICENSE_zh-CN",
     "bin/fslint",
     "scripts/postinstall.js",
     "download/.gitkeep"

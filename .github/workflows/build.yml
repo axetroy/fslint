@@ -91,8 +91,10 @@ jobs:
           GITHUB_REF: ${{ github.ref }}
         run: |
           cp README.md ./npm/README.md
+          cp README_zh-CN.md ./npm/README_zh-CN.md
           cp release.md ./npm/CHANGELOG.md
           cp LICENSE ./npm/LICENSE
+          cp LICENSE_zh-CN ./npm/LICENSE_zh-CN
           node ./npm/scripts/bump.js
 
       - name: Publish to NPM
