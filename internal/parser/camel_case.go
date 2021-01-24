@@ -3,10 +3,10 @@ package parser
 import (
 	"unicode/utf8"
 
-	"github.com/axetroy/fslint/char_state"
+	"github.com/axetroy/fslint/internal/char_state"
 )
 
-func IsDotDot(str string, isBig bool) bool {
+func IsCamelCase(str string, isBig bool) bool {
 	if !utf8.ValidString(str) {
 		return false
 	}
@@ -21,7 +21,6 @@ func IsDotDot(str string, isBig bool) bool {
 		}
 
 		prev := char.Prev()
-		next := char.Next()
 
 		switch true {
 		case char.Is(char_state.CharTypeLowerCase):
@@ -36,29 +35,9 @@ func IsDotDot(str string, isBig bool) bool {
 			if !isBig && char.Index() == 0 {
 				return false
 			}
-			if char.Index() != 0 {
-				if !prev.Is(char_state.CharTypeDot) {
-					return false
-				}
-			}
 		case char.Is(char_state.CharTypeNumber):
 			if char.Index() == 0 {
 				return false
-			}
-		case char.Is(char_state.CharTypeDot):
-			if char.Index() == 0 {
-				return false
-			}
-			if next != nil {
-				if next.Is(char_state.CharTypeDot) {
-					return false
-				}
-				if isBig && !next.Is(char_state.CharTypeUpperCase) {
-					return false
-				}
-				if !isBig && !next.Is(char_state.CharTypeLowerCase) {
-					return false
-				}
 			}
 		default:
 			return false

@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/axetroy/fslint/parser"
+	"github.com/axetroy/fslint/internal/parser"
 	zglob "github.com/mattn/go-zglob"
 	"github.com/pkg/errors"
 	glob "github.com/ryanuber/go-glob"

@@ -3,10 +3,10 @@ package parser
 import (
 	"unicode/utf8"
 
-	"github.com/axetroy/fslint/char_state"
+	"github.com/axetroy/fslint/internal/char_state"
 )
 
-func IsSnakeCase(str string, isBig bool) bool {
+func IsDotDot(str string, isBig bool) bool {
 	if !utf8.ValidString(str) {
 		return false
 	}
@@ -37,7 +37,7 @@ func IsSnakeCase(str string, isBig bool) bool {
 				return false
 			}
 			if char.Index() != 0 {
-				if !prev.Is(char_state.CharTypeUnderscore) {
+				if !prev.Is(char_state.CharTypeDot) {
 					return false
 				}
 			}
@@ -45,12 +45,12 @@ func IsSnakeCase(str string, isBig bool) bool {
 			if char.Index() == 0 {
 				return false
 			}
-		case char.Is(char_state.CharTypeUnderscore):
+		case char.Is(char_state.CharTypeDot):
 			if char.Index() == 0 {
 				return false
 			}
 			if next != nil {
-				if next.Is(char_state.CharTypeUnderscore) {
+				if next.Is(char_state.CharTypeDot) {
 					return false
 				}
 				if isBig && !next.Is(char_state.CharTypeUpperCase) {

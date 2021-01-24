@@ -3,7 +3,7 @@ package parser
 import (
 	"unicode/utf8"
 
-	"github.com/axetroy/fslint/char_state"
+	"github.com/axetroy/fslint/internal/char_state"
 )
 
 func IsUppercaseUnderscoreUppercase(str string) bool {
