@@ -18,22 +18,22 @@ $ fslint --config=.fslintrc.json
 
 `.fslintrc.json` is a JSON file look like this:
 
-```json5
+```jsonc
 {
-  exclude: ["vendor", "node_modules", "bin"],
-  include: [
+  "exclude": ["vendor", "node_modules", "bin"],
+  "include": [
     {
-      file: "./src/**/*.vue", // lint for file
-      level: "error",
-      pattern: "CamelCase",
-      ignore: ["**/index.vue"], // ignore index.vue in this rule
+      "file": "./src/**/*.vue", // lint for file
+      "level": "error",
+      "pattern": "CamelCase",
+      "ignore": ["**/index.vue"] // ignore index.vue in this rule
     },
     {
-      folder: "./src/**/*", // lint for folder
-      level: "error",
-      pattern: "kebab-kebab",
-    },
-  ],
+      "folder": "./src/**/*", // lint for folder
+      "level": "error",
+      "pattern": "kebab-kebab"
+    }
+  ]
 }
 ```
 

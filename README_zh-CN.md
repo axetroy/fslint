@@ -18,22 +18,22 @@ $ fslint --config=.fslintrc.json
 
 `.fslintrc.json` 是一个配置文件
 
-```json5
+```jsonc
 {
-  exclude: ["vendor", "node_modules", "bin"],
-  include: [
+  "exclude": ["vendor", "node_modules", "bin"],
+  "include": [
     {
-      file: "./src/**/*.vue", // 检测 *.vue 文件
-      level: "error",
-      pattern: "CamelCase",
-      ignore: ["index.vue"], // 在这条规则中忽略 index.vue 文件
+      "file": "./src/**/*.vue", // 检测 *.vue 文件
+      "level": "error",
+      "pattern": "CamelCase",
+      "ignore": ["**/index.vue"] // 在这条规则中忽略 index.vue 文件
     },
     {
-      folder: "./src/**/*", // 检测文件夹
-      level: "error",
-      pattern: "kebab-kebab",
-    },
-  ],
+      "folder": "./src/**/*", // 检测文件夹
+      "level": "error",
+      "pattern": "kebab-kebab"
+    }
+  ]
 }
 ```
 
