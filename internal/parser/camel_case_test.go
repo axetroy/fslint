@@ -49,6 +49,13 @@ func TestIsBigCamelCase(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "Do123Something",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "Do.Something",
 			},
 			want: false,
@@ -97,6 +104,20 @@ func TestIsLittleCamelCase(t *testing.T) {
 			name: "basic",
 			args: args{
 				str: "doSomething",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do1Something",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do123Something",
 			},
 			want: true,
 		},

@@ -137,6 +137,41 @@ func TestIsUppercaseUnderscoreUppercase(t *testing.T) {
 			},
 			want: true,
 		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO_WORLD1",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO_WORLD_1a",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO_WORLD_1",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO_WORLD_123",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO_WORLD__1",
+			},
+			want: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

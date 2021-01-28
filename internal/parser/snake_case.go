@@ -46,11 +46,11 @@ func IsSnakeCase(str string, isBig bool) bool {
 				return false
 			}
 
-			if !prev.Is(char_state.CharTypeUnderscore) {
+			if !prev.Is(char_state.CharTypeUnderscore) && !prev.Is(char_state.CharTypeNumber) {
 				return false
 			}
 
-			if next != nil && !next.Is(char_state.CharTypeUnderscore) {
+			if next != nil && (!next.Is(char_state.CharTypeUnderscore) && !next.Is(char_state.CharTypeNumber)) {
 				return false
 			}
 		case char.Is(char_state.CharTypeUnderscore):

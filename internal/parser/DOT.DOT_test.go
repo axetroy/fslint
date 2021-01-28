@@ -137,6 +137,20 @@ func TestIsUppercaseDotUppercase(t *testing.T) {
 			},
 			want: true,
 		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO.WORLD.1",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO.WORLD.123",
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

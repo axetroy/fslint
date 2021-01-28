@@ -105,6 +105,20 @@ func TestIsBigDotDot(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "Do.1.Staff",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "Do.123.Staff",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "dostaff",
 			},
 			want: false,
@@ -223,6 +237,27 @@ func TestIsLittleDotDot(t *testing.T) {
 			name: "basic",
 			args: args{
 				str: "dostaff",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do.staff",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do.1.staff",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do.123.staff",
 			},
 			want: true,
 		},

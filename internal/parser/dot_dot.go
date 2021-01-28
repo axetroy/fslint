@@ -53,10 +53,9 @@ func IsDotDot(str string, isBig bool) bool {
 				if next.Is(char_state.CharTypeDot) {
 					return false
 				}
-				if isBig && !next.Is(char_state.CharTypeUpperCase) {
+				if isBig && !next.Is(char_state.CharTypeUpperCase) && !next.Is(char_state.CharTypeNumber) {
 					return false
-				}
-				if !isBig && !next.Is(char_state.CharTypeLowerCase) {
+				} else if !isBig && !next.Is(char_state.CharTypeLowerCase) && !next.Is(char_state.CharTypeNumber) {
 					return false
 				}
 			}
