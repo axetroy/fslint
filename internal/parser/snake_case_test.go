@@ -102,6 +102,20 @@ func TestIsBigSnakeCase(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "basic",
+			args: args{
+				str: "Do_Something2",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "Do_Something_2",
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -209,6 +223,20 @@ func TestIsLittleSnakeCase(t *testing.T) {
 			name: "basic",
 			args: args{
 				str: "dostaff",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do_something2",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do_something_2",
 			},
 			want: true,
 		},
