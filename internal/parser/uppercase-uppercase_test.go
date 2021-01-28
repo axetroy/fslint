@@ -130,6 +130,20 @@ func TestIsUppercaseWithUppercase(t *testing.T) {
 			},
 			want: true,
 		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO-WORLD2",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "HELLO-WORLD-2",
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -21,9 +21,15 @@ func IsUppercaseWithUppercase(str string) bool {
 		}
 
 		index := char.Index()
+		prev := char.Prev()
 
 		switch true {
 		case char.Is(char_state.CharTypeUpperCase):
+			continue
+		case char.Is(char_state.CharTypeNumber):
+			if prev != nil && !prev.Is(char_state.CharTypeKebab) {
+				return false
+			}
 			continue
 		case char.Is(char_state.CharTypeKebab):
 			if index == 0 || index == state.Len()-1 {
