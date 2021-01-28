@@ -112,7 +112,21 @@ func TestIsBigKebab(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "Do-Staff-12",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "do-staff12",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do-staff-12",
 			},
 			want: false,
 		},
@@ -236,7 +250,21 @@ func TestIsLittleKebab(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "Do-Staff-12",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "do-staff12",
+			},
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "do-staff-12",
 			},
 			want: true,
 		},
