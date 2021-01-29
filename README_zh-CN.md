@@ -66,9 +66,9 @@ npm install @axetroy/fslint -g
 # 安装最新版本
 curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash
 # 或者安装指定版本
-curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.2.16
+curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.2.17
 # 或者通过 gobinaries.com 安装
-curl -sf https://gobinaries.com/axetroy/fslint@v0.2.16 | sh
+curl -sf https://gobinaries.com/axetroy/fslint@v0.2.17 | sh
 ```
 
 从[release page](https://github.com/axetroy/fslint/releases)页面下载对应平台的可执行文件，并且把它加入到 `$PATH` 环境变量中，并尝试以下命令
