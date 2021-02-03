@@ -141,7 +141,7 @@ loop:
 				reg, err := regexp.Compile(val)
 
 				if err != nil {
-					return errors.WithStack(err)
+					return errors.WithMessage(err, "invalid regexpression")
 				}
 
 				if !reg.MatchString(testTarget) {
