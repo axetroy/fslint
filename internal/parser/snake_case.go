@@ -6,7 +6,7 @@ import (
 	"github.com/axetroy/fslint/internal/char_state"
 )
 
-func IsSnakeCase(str string, isBig bool) bool {
+func IsSnakeCase(str string) bool {
 	if !utf8.ValidString(str) {
 		return false
 	}
@@ -28,12 +28,8 @@ func IsSnakeCase(str string, isBig bool) bool {
 			if prev != nil && prev.Is(char_state.CharTypeNumber) {
 				return false
 			}
-			// if first char
-			if isBig && char.Index() == 0 {
-				return false
-			}
 		case char.Is(char_state.CharTypeUpperCase):
-			if !isBig && char.Index() == 0 {
+			if char.Index() == 0 {
 				return false
 			}
 			if char.Index() != 0 {
@@ -61,9 +57,7 @@ func IsSnakeCase(str string, isBig bool) bool {
 				if next.Is(char_state.CharTypeUnderscore) {
 					return false
 				}
-				if isBig && !next.Is(char_state.CharTypeUpperCase) && !next.Is(char_state.CharTypeNumber) {
-					return false
-				} else if !isBig && !next.Is(char_state.CharTypeLowerCase) && !next.Is(char_state.CharTypeNumber) {
+				if !next.Is(char_state.CharTypeLowerCase) && !next.Is(char_state.CharTypeNumber) {
 					return false
 				}
 			}

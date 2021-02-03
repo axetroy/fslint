@@ -103,7 +103,7 @@ loop:
 
 		switch selector.Pattern {
 		case ModePascalCase:
-			if !parser.IsCamelCase(testTarget, true) {
+			if !parser.IsPascalCase(testTarget) {
 				results.Append(LintResult{
 					FilePath: file,
 					Expect:   ModePascalCase,
@@ -111,7 +111,7 @@ loop:
 				})
 			}
 		case ModeCamelCase:
-			if !parser.IsCamelCase(testTarget, false) {
+			if !parser.IsCamelCase(testTarget) {
 				results.Append(LintResult{
 					FilePath: file,
 					Expect:   ModeCamelCase,
@@ -126,59 +126,11 @@ loop:
 					Level:    selector.Level,
 				})
 			}
-		case ModeAllUppercaseKebab:
-			if !parser.IsUppercaseWithUppercase(testTarget) {
+		case ModeSnakeCase:
+			if !parser.IsSnakeCase(testTarget) {
 				results.Append(LintResult{
 					FilePath: file,
-					Expect:   ModeAllUppercaseKebab,
-					Level:    selector.Level,
-				})
-			}
-		case ModeBigSnakeCase:
-			if !parser.IsSnakeCase(testTarget, true) {
-				results.Append(LintResult{
-					FilePath: file,
-					Expect:   ModeBigSnakeCase,
-					Level:    selector.Level,
-				})
-			}
-		case ModeLittleSnakeCase:
-			if !parser.IsSnakeCase(testTarget, false) {
-				results.Append(LintResult{
-					FilePath: file,
-					Expect:   ModeLittleSnakeCase,
-					Level:    selector.Level,
-				})
-			}
-		case ModeAllUppercaseSnakeCase:
-			if !parser.IsUppercaseUnderscoreUppercase(testTarget) {
-				results.Append(LintResult{
-					FilePath: file,
-					Expect:   ModeAllUppercaseSnakeCase,
-					Level:    selector.Level,
-				})
-			}
-		case ModeBigDot:
-			if !parser.IsDotDot(testTarget, true) {
-				results.Append(LintResult{
-					FilePath: file,
-					Expect:   ModeBigDot,
-					Level:    selector.Level,
-				})
-			}
-		case ModeLittleDot:
-			if !parser.IsDotDot(testTarget, false) {
-				results.Append(LintResult{
-					FilePath: file,
-					Expect:   ModeLittleDot,
-					Level:    selector.Level,
-				})
-			}
-		case ModeAllUppercaseDot:
-			if !parser.IsUppercaseDotUppercase(testTarget) {
-				results.Append(LintResult{
-					FilePath: file,
-					Expect:   ModeAllUppercaseDot,
+					Expect:   ModeSnakeCase,
 					Level:    selector.Level,
 				})
 			}

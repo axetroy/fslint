@@ -2,7 +2,7 @@ package parser
 
 import "testing"
 
-func TestIsCamelCase(t *testing.T) {
+func TestIsPascalCase(t *testing.T) {
 	type args struct {
 		str string
 	}
@@ -16,28 +16,14 @@ func TestIsCamelCase(t *testing.T) {
 			args: args{
 				str: "DoSomething",
 			},
-			want: false,
+			want: true,
 		},
 		{
 			name: "basic",
 			args: args{
 				str: "doSomething",
 			},
-			want: true,
-		},
-		{
-			name: "basic",
-			args: args{
-				str: "do1Something",
-			},
-			want: true,
-		},
-		{
-			name: "basic",
-			args: args{
-				str: "do123Something",
-			},
-			want: true,
+			want: false,
 		},
 		{
 			name: "basic",
@@ -58,7 +44,14 @@ func TestIsCamelCase(t *testing.T) {
 			args: args{
 				str: "Do1Something",
 			},
-			want: false,
+			want: true,
+		},
+		{
+			name: "basic",
+			args: args{
+				str: "Do123Something",
+			},
+			want: true,
 		},
 		{
 			name: "basic",
@@ -84,8 +77,8 @@ func TestIsCamelCase(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := IsCamelCase(tt.args.str); got != tt.want {
-				t.Errorf("IsCamelCase(\"%s\") = %v, want %v", tt.args.str, got, tt.want)
+			if got := IsPascalCase(tt.args.str); got != tt.want {
+				t.Errorf("IsPascalCase(\"%s\") = %v, want %v", tt.args.str, got, tt.want)
 			}
 		})
 	}

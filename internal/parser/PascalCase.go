@@ -6,7 +6,7 @@ import (
 	"github.com/axetroy/fslint/internal/char_state"
 )
 
-func IsCamelCase(str string) bool {
+func IsPascalCase(str string) bool {
 	if !utf8.ValidString(str) {
 		return false
 	}
@@ -27,10 +27,12 @@ func IsCamelCase(str string) bool {
 			if prev != nil && prev.Is(char_state.CharTypeNumber) {
 				return false
 			}
-		case char.Is(char_state.CharTypeUpperCase):
+			// if first char
 			if char.Index() == 0 {
 				return false
 			}
+		case char.Is(char_state.CharTypeUpperCase):
+			continue
 		case char.Is(char_state.CharTypeNumber):
 			if char.Index() == 0 {
 				return false

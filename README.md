@@ -42,13 +42,7 @@ $ fslint --config=.fslintrc.json
 | **PascalCase**   | Pascal Case style                                                  | Yes       |
 | **camelCase**    | Camel Case style                                                   | Yes       |
 | **kebab-case**   | Lowercase letters and concatenated by symbols `-`                  | Yes       |
-| **KEBAB-KEBAB**  | All characters are uppercase and concatenated by symbols `-`       |           |
-| **Snake_Case**   | Uppercase letters snake case style and concatenated by symbols `_` |           |
 | **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_` | Yes       |
-| **SNAKE_CASE**   | All characters are uppercase and concatenated by symbols `_`       |           |
-| **Dot.Dot**      | Start with lowercase, with `.` as the delimiter style              |           |
-| **dot.dot**      | Start with uppercase, with `.` as the delimiter style              |           |
-| **DOT.DOT**      | All characters are uppercase and concatenated by symbols `.`       |           |
 | **/\<regexp\>/** | regular expression start with `/` and end with `/`                 |           |
 
 ### Installation

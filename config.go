@@ -16,21 +16,17 @@ import (
 	"github.com/yosuke-furukawa/json5/encoding/json5"
 )
 
-type Mode string
-type Level string
+type (
+	Mode  string
+	Level string
+)
 
 const (
-	ModePascalCase            Mode = "PascalCase"
-	ModeCamelCase             Mode = "camelCase"
-	ModeKebabCase             Mode = "kebab-case"
-	ModeAllUppercaseKebab     Mode = "KEBAB-KEBAB"
-	ModeBigSnakeCase          Mode = "Snake_Case"
-	ModeLittleSnakeCase       Mode = "snake_case"
-	ModeAllUppercaseSnakeCase Mode = "SNAKE_CASE"
-	ModeBigDot                Mode = "Dot.Dot"
-	ModeLittleDot             Mode = "dot.dot"
-	ModeAllUppercaseDot       Mode = "DOT.DOT"
-	ModeRegExp                Mode = "RegExp"
+	ModePascalCase Mode = "PascalCase"
+	ModeCamelCase  Mode = "camelCase"
+	ModeKebabCase  Mode = "kebab-case"
+	ModeSnakeCase  Mode = "snake_case"
+	ModeRegExp     Mode = "RegExp"
 
 	LevelWarn  Level = "warn"
 	LevelError Level = "error"
@@ -41,13 +37,7 @@ var (
 		ModePascalCase,
 		ModeCamelCase,
 		ModeKebabCase,
-		ModeAllUppercaseKebab,
-		ModeBigSnakeCase,
-		ModeLittleSnakeCase,
-		ModeAllUppercaseSnakeCase,
-		ModeBigDot,
-		ModeLittleDot,
-		ModeAllUppercaseDot,
+		ModeSnakeCase,
 	}
 
 	AllLevel = []Level{
