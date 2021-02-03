@@ -29,10 +29,7 @@ func printHelp() {
 	println(`fslint - a cli tool for lint file system style
 
 USAGE:
-  fslint [OPTIONS] [version...]
-
-ARGUMENTS:
-  [version...]  Optional version or version range.
+  fslint [OPTIONS]
 
 OPTIONS:
   --help        Print help information.
