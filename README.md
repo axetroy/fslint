@@ -25,7 +25,7 @@ $ fslint --config=.fslintrc.json
     {
       "file": "./src/**/*.vue", // lint for file
       "level": "error",
-      "pattern": "CamelCase",
+      "pattern": "PascalCase",
       "ignore": ["**/index.vue"] // ignore index.vue in this rule
     },
     {
@@ -37,20 +37,20 @@ $ fslint --config=.fslintrc.json
 }
 ```
 
-| Pattern          | Description                                                                | Recommend |
-| ---------------- | -------------------------------------------------------------------------- | --------- |
-| **CamelCase**    | Camel case with initial capital                                            | Yes       |
-| **camelCase**    | Camel case with lowercase initials                                         |           |
-| **Kebab-Kebab**  | Uppercase letters and concatenated by symbols `-`                          |           |
-| **kebab-kebab**  | Lowercase letters and concatenated by symbols `-`                          | Yes       |
-| **KEBAB-KEBAB**  | All characters are uppercase and concatenated by symbols `-`               |           |
-| **Snake_Case**   | Uppercase letters snake case style and concatenated by symbols `_`         |           |
-| **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_`         | Yes       |
-| **SNAKE_CASE**   | All characters are uppercase and concatenated by symbols `_`               |           |
-| **Dot.Dot**      | Start with lowercase, with `.` as the delimiter style                      |           |
-| **dot.dot**      | Start with uppercase, with `.` as the delimiter style                      |           |
-| **DOT.DOT**      | All characters are uppercase and concatenated by symbols `.`               |           |
-| **/\<regexp\>/** | A string beginning and ending with `/` is regarded as a regular expression |           |
+| Pattern          | Description                                                        | Recommend |
+| ---------------- | ------------------------------------------------------------------ | --------- |
+| **PascalCase**   | Pascal Case style                                                  | Yes       |
+| **camelCase**    | Camel Case style                                                   | Yes       |
+| **Kebab-Kebab**  | Uppercase letters and concatenated by symbols `-`                  |           |
+| **kebab-kebab**  | Lowercase letters and concatenated by symbols `-`                  | Yes       |
+| **KEBAB-KEBAB**  | All characters are uppercase and concatenated by symbols `-`       |           |
+| **Snake_Case**   | Uppercase letters snake case style and concatenated by symbols `_` |           |
+| **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_` | Yes       |
+| **SNAKE_CASE**   | All characters are uppercase and concatenated by symbols `_`       |           |
+| **Dot.Dot**      | Start with lowercase, with `.` as the delimiter style              |           |
+| **dot.dot**      | Start with uppercase, with `.` as the delimiter style              |           |
+| **DOT.DOT**      | All characters are uppercase and concatenated by symbols `.`       |           |
+| **/\<regexp\>/** | regular expression start with `/` and end with `/`                 |           |
 
 ### Installation
 

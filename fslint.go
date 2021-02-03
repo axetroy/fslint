@@ -102,19 +102,19 @@ loop:
 		}
 
 		switch selector.Pattern {
-		case ModeBigCamelCase:
+		case ModePascalCase:
 			if !parser.IsCamelCase(testTarget, true) {
 				results.Append(LintResult{
 					FilePath: file,
-					Expect:   ModeBigCamelCase,
+					Expect:   ModePascalCase,
 					Level:    selector.Level,
 				})
 			}
-		case ModeLittleCamelCase:
+		case ModeCamelCase:
 			if !parser.IsCamelCase(testTarget, false) {
 				results.Append(LintResult{
 					FilePath: file,
-					Expect:   ModeLittleCamelCase,
+					Expect:   ModeCamelCase,
 					Level:    selector.Level,
 				})
 			}
