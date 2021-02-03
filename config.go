@@ -22,7 +22,6 @@ type Level string
 const (
 	ModePascalCase            Mode = "PascalCase"
 	ModeCamelCase             Mode = "camelCase"
-	ModeBigKebab              Mode = "Kebab-Kebab"
 	ModeLittleKebab           Mode = "kebab-kebab"
 	ModeAllUppercaseKebab     Mode = "KEBAB-KEBAB"
 	ModeBigSnakeCase          Mode = "Snake_Case"
@@ -41,7 +40,6 @@ var (
 	AllMode = []Mode{
 		ModePascalCase,
 		ModeCamelCase,
-		ModeBigKebab,
 		ModeLittleKebab,
 		ModeAllUppercaseKebab,
 		ModeBigSnakeCase,

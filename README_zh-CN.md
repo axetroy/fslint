@@ -41,7 +41,6 @@ $ fslint --config=.fslintrc.json
 | ---------------- | ----------------------------------- | ---- |
 | **PascalCase**   | 大写的驼峰式风格                    | Yes  |
 | **camelCase**    | 小写的驼峰式风格                    | Yes  |
-| **Kebab-Kebab**  | 使用 破折号(`-`) 连接的大写开头风格 |      |
 | **kebab-kebab**  | 使用 破折号(`-`) 连接的小写风格     | Yes  |
 | **KEBAB-KEBAB**  | 使用 破折号(`-`) 连接的全全写风格   |      |
 | **Snake_Case**   | 大写开头的蛇式风格                  |      |
