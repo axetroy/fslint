@@ -20,7 +20,7 @@ $ fslint --config=.fslintrc.json
 
 ```jsonc
 {
-  "exclude": ["vendor", "node_modules", "bin"],
+  "exclude": ["vendor", "node_modules", "bin", ".git"],
   "include": [
     {
       "file": "./src/**/*.vue", // 检测 *.vue 文件
