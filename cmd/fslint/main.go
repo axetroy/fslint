@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/axetroy/fslint"
 	"github.com/gookit/color"
@@ -20,6 +21,8 @@ var (
 	green  = color.FgGreen.Render
 	blue   = color.FgLightMagenta.Render
 	yellow = color.FgYellow.Render
+
+	startAt = time.Now()
 )
 
 func printHelp() {
@@ -115,7 +118,9 @@ func run() error {
 				}
 			}
 
-			color.Fprintf(os.Stderr, "[fslint]: finish with %s warning and %s error.\n", yellow(warnNum), red(errorNum))
+			elapsed := time.Since(startAt)
+
+			color.Fprintf(os.Stderr, "[fslint]: finish with %s warning and %s error in %s.\n", yellow(warnNum), red(errorNum), green(elapsed))
 
 			if results.ErrorCount() > 0 {
 				os.Exit(1)
