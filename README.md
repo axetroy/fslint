@@ -31,7 +31,7 @@ $ fslint --config=.fslintrc.json
     {
       "folder": "./src/**/*", // lint for folder
       "level": "error",
-      "pattern": "kebab-kebab"
+      "pattern": "kebab-case"
     }
   ]
 }
@@ -41,7 +41,7 @@ $ fslint --config=.fslintrc.json
 | ---------------- | ------------------------------------------------------------------ | --------- |
 | **PascalCase**   | Pascal Case style                                                  | Yes       |
 | **camelCase**    | Camel Case style                                                   | Yes       |
-| **kebab-kebab**  | Lowercase letters and concatenated by symbols `-`                  | Yes       |
+| **kebab-case**   | Lowercase letters and concatenated by symbols `-`                  | Yes       |
 | **KEBAB-KEBAB**  | All characters are uppercase and concatenated by symbols `-`       |           |
 | **Snake_Case**   | Uppercase letters snake case style and concatenated by symbols `_` |           |
 | **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_` | Yes       |

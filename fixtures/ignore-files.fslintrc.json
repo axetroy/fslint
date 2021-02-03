@@ -7,7 +7,7 @@
         "*_*.md"
       ],
       "level": "error",
-      "pattern": "kebab-kebab"
+      "pattern": "kebab-case"
     }
   ]
 }

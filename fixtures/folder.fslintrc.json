@@ -4,7 +4,7 @@
     {
       "folder": "./fixtures/**/*", // lint for folder
       "level": "error",
-      "pattern": "kebab-kebab"
+      "pattern": "kebab-case"
     }
   ]
 }

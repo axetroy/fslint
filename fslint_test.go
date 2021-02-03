@@ -25,27 +25,27 @@ func TestLint(t *testing.T) {
 			want: []LintResult{
 				{
 					FilePath: "fixtures/files/CamelCase11.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/files/Kebab-Kebab21.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/files/Snake_Case31.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/files/camelCase12.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/files/snake_case32.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 			},
@@ -59,18 +59,18 @@ func TestLint(t *testing.T) {
 			want: []LintResult{
 				{
 					FilePath: "fixtures/TestFolder",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 
 				{
 					FilePath: "fixtures/TestFolder/Nest_Folder",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/TestFolder/ignore_folder",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 			},
@@ -84,17 +84,17 @@ func TestLint(t *testing.T) {
 			want: []LintResult{
 				{
 					FilePath: "fixtures/files/CamelCase11.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/files/Kebab-Kebab21.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/files/camelCase12.md",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 			},
@@ -108,12 +108,12 @@ func TestLint(t *testing.T) {
 			want: []LintResult{
 				{
 					FilePath: "fixtures/TestFolder",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 				{
 					FilePath: "fixtures/TestFolder/Nest_Folder",
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
 			},

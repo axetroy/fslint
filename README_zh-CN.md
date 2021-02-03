@@ -31,7 +31,7 @@ $ fslint --config=.fslintrc.json
     {
       "folder": "./src/**/*", // 检测文件夹
       "level": "error",
-      "pattern": "kebab-kebab"
+      "pattern": "kebab-case"
     }
   ]
 }
@@ -41,7 +41,7 @@ $ fslint --config=.fslintrc.json
 | ---------------- | ----------------------------------- | ---- |
 | **PascalCase**   | 大写的驼峰式风格                    | Yes  |
 | **camelCase**    | 小写的驼峰式风格                    | Yes  |
-| **kebab-kebab**  | 使用 破折号(`-`) 连接的小写风格     | Yes  |
+| **kebab-case**   | 使用 破折号(`-`) 连接的小写风格     | Yes  |
 | **KEBAB-KEBAB**  | 使用 破折号(`-`) 连接的全全写风格   |      |
 | **Snake_Case**   | 大写开头的蛇式风格                  |      |
 | **snake_case**   | 小写开头的蛇式风格                  | Yes  |

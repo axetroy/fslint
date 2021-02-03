@@ -118,11 +118,11 @@ loop:
 					Level:    selector.Level,
 				})
 			}
-		case ModeLittleKebab:
+		case ModeKebabCase:
 			if !parser.IsKebabCase(testTarget) {
 				results.Append(LintResult{
 					FilePath: file,
-					Expect:   ModeLittleKebab,
+					Expect:   ModeKebabCase,
 					Level:    selector.Level,
 				})
 			}
