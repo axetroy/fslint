@@ -11,8 +11,10 @@ const bin = path.join(__dirname, "..", "download", "fslint" + suffix);
 const argv = process.argv;
 
 if (!fs.existsSync(bin)) {
+  const script = path.join(__dirname, "scripts", "postinstall.js");
+
   console.error(
-    `fslint did not download. please run the following command 'node node_modules/@axetroy/fslint/scripts/postinstall.js'`
+    `fslint did not download. please run the following command: 'node ${script}'`
   );
   process.exit(1);
 }
