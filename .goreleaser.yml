@@ -12,6 +12,10 @@ builds:
       - arm
       - arm64
       - 386
+      - mips
+      - mipsle
+      - mips64
+      - mips64le
     goarm:
       - 5
       - 6
