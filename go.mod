@@ -6,7 +6,7 @@ require (
 	github.com/fatih/color v1.10.0
 	github.com/go-playground/locales v0.13.0
 	github.com/go-playground/universal-translator v0.17.0
-	github.com/go-playground/validator/v10 v10.4.1
+	github.com/go-playground/validator/v10 v10.5.0
 	github.com/gookit/color v1.3.7
 	github.com/mattn/go-zglob v0.0.3
 	github.com/pkg/errors v0.9.1
