@@ -3,7 +3,7 @@ github.com/davecgh/go-spew/spew
 # github.com/fatih/color v1.12.0
 ## explicit
 github.com/fatih/color
-# github.com/go-playground/locales v0.13.0
+# github.com/go-playground/locales v0.14.0
 ## explicit
 github.com/go-playground/locales
 github.com/go-playground/locales/currency
@@ -51,7 +51,7 @@ golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# golang.org/x/text v0.3.2
+# golang.org/x/text v0.3.6
 golang.org/x/text/internal/language
 golang.org/x/text/internal/language/compact
 golang.org/x/text/internal/tag
