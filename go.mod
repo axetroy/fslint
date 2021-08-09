@@ -4,8 +4,8 @@ go 1.16
 
 require (
 	github.com/fatih/color v1.12.0
-	github.com/go-playground/locales v0.13.0
-	github.com/go-playground/universal-translator v0.17.0
+	github.com/go-playground/locales v0.14.0
+	github.com/go-playground/universal-translator v0.18.0
 	github.com/go-playground/validator/v10 v10.7.0
 	github.com/gookit/color v1.4.2
 	github.com/mattn/go-zglob v0.0.3
