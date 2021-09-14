@@ -47,12 +47,6 @@ $ fslint --config=.fslintrc.json
 
 ### 安装
 
-如果你已安装 nodejs，则可以通过 npm 进行安装
-
-```bash
-npm install @axetroy/fslint -g
-```
-
 如果你使用的是 Linux/macOS，你可以通过以下命令进行安装
 
 ```shell
