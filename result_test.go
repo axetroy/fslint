@@ -21,4 +21,10 @@ func TestResult(t *testing.T) {
 
 	assert.Equal(t, 1, results.WarnCount())
 	assert.Equal(t, 0, results.ErrorCount())
+
+	list := make([]LintResult, 0)
+
+	list = append(list, r)
+
+	assert.Equal(t, list, results.Values())
 }
