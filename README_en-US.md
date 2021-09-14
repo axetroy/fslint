@@ -59,9 +59,9 @@ If you are using Linux/macOS. you can install it with the following command:
 # install latest version
 curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash
 # or install specified version
-curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.3.2
+curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.3.6
 # or install from gobinaries.com
-curl -sf https://gobinaries.com/axetroy/fslint@v0.3.2 | sh
+curl -sf https://gobinaries.com/axetroy/fslint@v0.3.6 | sh
 ```
 
 Or Download the executable file for your platform at [release page](https://github.com/axetroy/fslint/releases)
