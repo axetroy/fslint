@@ -1,4 +1,4 @@
-English | [中文简体](README_zh-CN.md)
+中文简体 | [English](README.md)
 
 [![Build Status](https://github.com/axetroy/fslint/workflows/ci/badge.svg)](https://github.com/axetroy/fslint/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/fslint)](https://goreportcard.com/report/github.com/axetroy/fslint)
@@ -8,7 +8,7 @@ English | [中文简体](README_zh-CN.md)
 
 ## fslint
 
-This is a tool for detecting file system naming styles. It is hard to imagine that there are several different styles of file naming in the same application.
+这是用于检测文件系统命名风格的工具。 很难想象在同一应用程序中有几种不同的文件命名风格。
 
 ### Usage
 
@@ -16,20 +16,20 @@ This is a tool for detecting file system naming styles. It is hard to imagine th
 $ fslint --config=.fslintrc.json
 ```
 
-`.fslintrc.json` is a JSON file look like this:
+`.fslintrc.json` 是一个配置文件
 
 ```jsonc
 {
   "exclude": ["vendor", "node_modules", "bin", ".git"],
   "include": [
     {
-      "file": "./src/**/*.vue", // lint for file
+      "file": "./src/**/*.vue", // 检测 *.vue 文件
       "level": "error",
       "pattern": "PascalCase",
-      "ignore": ["**/index.vue"] // ignore index.vue in this rule
+      "ignore": ["**/index.vue"] // 在这条规则中忽略 index.vue 文件
     },
     {
-      "folder": "./src/**/*", // lint for folder
+      "folder": "./src/**/*", // 检测文件夹
       "level": "error",
       "pattern": "kebab-case"
     }
@@ -37,41 +37,41 @@ $ fslint --config=.fslintrc.json
 }
 ```
 
-| Pattern          | Description                                                        | Recommend |
-| ---------------- | ------------------------------------------------------------------ | --------- |
-| **PascalCase**   | Pascal Case style                                                  | Yes       |
-| **camelCase**    | Camel Case style                                                   | Yes       |
-| **kebab-case**   | Lowercase letters and concatenated by symbols `-`                  | Yes       |
-| **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_` | Yes       |
-| **/\<regexp\>/** | regular expression start with `/` and end with `/`                 |           |
+| Pattern          | 描述                             | 推荐 |
+| ---------------- | -------------------------------- | ---- |
+| **PascalCase**   | 大写的驼峰式风格                 | Yes  |
+| **camelCase**    | 小写的驼峰式风格                 | Yes  |
+| **kebab-case**   | 使用 破折号(`-`) 连接的小写风格  | Yes  |
+| **snake_case**   | 小写开头的蛇式风格               | Yes  |
+| **/\<regexp\>/** | 以 `/` 开头 `/` 结尾的正则表达式 |      |
 
-### Installation
+### 安装
 
-If you have installed nodejs, you can install it via npm
+如果你已安装 nodejs，则可以通过 npm 进行安装
 
 ```bash
 npm install @axetroy/fslint -g
 ```
 
-If you are using Linux/macOS. you can install it with the following command:
+如果你使用的是 Linux/macOS，你可以通过以下命令进行安装
 
 ```shell
-# install latest version
+# 安装最新版本
 curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash
-# or install specified version
+# 或者安装指定版本
 curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.3.2
-# or install from gobinaries.com
+# 或者通过 gobinaries.com 安装
 curl -sf https://gobinaries.com/axetroy/fslint@v0.3.2 | sh
 ```
 
-Or Download the executable file for your platform at [release page](https://github.com/axetroy/fslint/releases)
+从[release page](https://github.com/axetroy/fslint/releases)页面下载对应平台的可执行文件，并且把它加入到 `$PATH` 环境变量中，并尝试以下命令
 
-### Test
+### 测试
 
 ```bash
 $ make test
 ```
 
-### License
+### 开源许可
 
-The [Anti-996 License](LICENSE)
+The [Anti-996 License](LICENSE_zh-CN)
