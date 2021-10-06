@@ -45,26 +45,29 @@ $ fslint --config=.fslintrc.json
 | **snake_case**   | Lowercase letters snake case style and concatenated by symbols `_` | Yes       |
 | **/\<regexp\>/** | regular expression start with `/` and end with `/`                 |           |
 
-### Installation
+### Install
 
-If you have installed nodejs, you can install it via npm
+1. Shell (Mac/Linux)
 
 ```bash
-npm install @axetroy/fslint -g
+curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r=axetroy/fslint
 ```
 
-If you are using Linux/macOS. you can install it with the following command:
+2. PowerShell (Windows):
 
-```shell
-# install latest version
-curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash
-# or install specified version
-curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.3.6
-# or install from gobinaries.com
-curl -sf https://gobinaries.com/axetroy/fslint@v0.3.6 | sh
+```bash
+$r="axetroy/fslint";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
 
-Or Download the executable file for your platform at [release page](https://github.com/axetroy/fslint/releases)
+3. [Github release page](https://github.com/axetroy/fslint/releases) (All platforms)
+
+> download the executable file and put the executable file to `$PATH`
+
+4. Build and install from source using [Golang](https://golang.org) (All platforms)
+
+```bash
+go install github.com/axetroy/fslint/cmd/fslint@v0.3.6
+```
 
 ### Test
 

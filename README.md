@@ -47,18 +47,27 @@ $ fslint --config=.fslintrc.json
 
 ### 安装
 
-如果你使用的是 Linux/macOS，你可以通过以下命令进行安装
+1. Shell (Mac/Linux)
 
-```shell
-# 安装最新版本
-curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash
-# 或者安装指定版本
-curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/axetroy/fslint/master/install.sh | bash -s v0.3.6
-# 或者通过 gobinaries.com 安装
-curl -sf https://gobinaries.com/axetroy/fslint@v0.3.6 | sh
+```bash
+curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r=axetroy/fslint
 ```
 
-从[release page](https://github.com/axetroy/fslint/releases)页面下载对应平台的可执行文件，并且把它加入到 `$PATH` 环境变量中，并尝试以下命令
+2. PowerShell (Windows):
+
+```bash
+$r="axetroy/fslint";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+```
+
+3. [Github release page](https://github.com/axetroy/fslint/releases) (全平台支持))
+
+> 下载可执行文件，并且把它加入到`$PATH` 环境变量中
+
+4. 使用 [Golang](https://golang.org) 从源码中构建并安装 (全平台支持)
+
+```bash
+go install github.com/axetroy/fslint/cmd/fslint@v0.3.6
+```
 
 ### 测试
 
