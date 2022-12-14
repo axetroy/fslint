@@ -13,10 +13,10 @@
 ### Usage
 
 ```bash
-$ fslint --config=.fslintrc.json
+$ fslint --config=.fslintrc.jsonc
 ```
 
-`.fslintrc.json` 是一个配置文件
+`.fslintrc.jsonc` 是一个配置文件
 
 ```jsonc
 {
