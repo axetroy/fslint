@@ -126,6 +126,13 @@ func TestIsSnakeCase(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "_do_something_123",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "do_something__2",
 			},
 			want: false,

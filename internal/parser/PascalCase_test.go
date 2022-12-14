@@ -56,6 +56,13 @@ func TestIsPascalCase(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "_Do123Something",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "Do.Something",
 			},
 			want: false,

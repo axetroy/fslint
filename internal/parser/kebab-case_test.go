@@ -133,6 +133,13 @@ func TestIsKebab(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "_do-staff-12",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "do-staff--12",
 			},
 			want: false,

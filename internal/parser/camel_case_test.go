@@ -42,6 +42,13 @@ func TestIsCamelCase(t *testing.T) {
 		{
 			name: "basic",
 			args: args{
+				str: "_do123Something",
+			},
+			want: false,
+		},
+		{
+			name: "basic",
+			args: args{
 				str: "1doSomething",
 			},
 			want: false,
