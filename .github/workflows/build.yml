@@ -38,11 +38,11 @@ jobs:
           go mod tidy
           git checkout ./
 
-      - name: Build
-        uses: goreleaser/goreleaser-action@v2
-        with:
-          version: latest
-          args: release --rm-dist --skip-publish --skip-validate
+      # - name: Build
+      #   uses: goreleaser/goreleaser-action@v2
+      #   with:
+      #     version: latest
+      #     args: release --rm-dist --skip-publish --skip-validate
 
   release:
     name: Release to Github
