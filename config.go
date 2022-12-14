@@ -1,8 +1,8 @@
 package fslint
 
 import (
-	"io/ioutil"
 	"log"
+	"os"
 	"reflect"
 	"regexp"
 	"strings"
@@ -210,7 +210,7 @@ func NewConfig(content []byte) (*Config, error) {
 }
 
 func readConfig(configFilepath string) (*Config, error) {
-	b, err := ioutil.ReadFile(configFilepath)
+	b, err := os.ReadFile(configFilepath)
 
 	if err != nil {
 		return nil, errors.WithStack(err)
