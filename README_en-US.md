@@ -1,4 +1,4 @@
-[中文简体](README_zh-CN.md) | English
+[中文简体](README.md) | English
 
 [![Build Status](https://github.com/axetroy/fslint/workflows/ci/badge.svg)](https://github.com/axetroy/fslint/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/fslint)](https://goreportcard.com/report/github.com/axetroy/fslint)
