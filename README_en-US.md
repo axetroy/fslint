@@ -69,6 +69,12 @@ $r="axetroy/fslint";iwr https://github.com/release-lab/install/raw/v1/install.ps
 go install github.com/axetroy/fslint/cmd/fslint@v0.3.6
 ```
 
+5. Install via npm
+
+```sh
+npm install @axetroy/fslint -g
+```
+
 ### Test
 
 ```bash
