@@ -1,0 +1,19 @@
+{
+  "name": "@axetroy/fslint",
+  "version": "0.1.0",
+  "description": "File system naming style lint",
+  "main": "lib/index.js",
+  "author": "Axetroy <axetroy.dev@gmail.com>",
+  "license": "Anti-996",
+  "bin": "bin/fslint",
+  "optionalDependencies": {
+    "fslint-darwin-amd64": "0.1.0",
+    "fslint-darwin-arm64": "0.1.0",
+    "fslint-linux-arm": "0.1.0",
+    "fslint-linux-arm64": "0.1.0",
+    "fslint-linux-amd64": "0.1.0",
+    "fslint-windows-arm": "0.1.0",
+    "fslint-windows-arm64": "0.1.0",
+    "fslint-windows-amd64": "0.1.0"
+  }
+}

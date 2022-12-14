@@ -1,0 +1,14 @@
+{
+  "name": "fslint-windows-arm",
+  "version": "0.1.0",
+  "description": "The Windows arm binary for fslint",
+  "repository": "https://github.com/axetroy/fslint",
+  "license": "Anti-996 License",
+  "preferUnplugged": true,
+  "engines": {
+    "node": ">=12"
+  },
+  "files": ["fslint.exe"],
+  "os": ["win32"],
+  "cpu": ["arm"]
+}

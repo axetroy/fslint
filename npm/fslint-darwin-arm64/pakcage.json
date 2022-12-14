@@ -1,0 +1,14 @@
+{
+  "name": "fslint-darwin-arm64",
+  "version": "0.1.0",
+  "description": "The MacOS arm64 binary for fslint",
+  "repository": "https://github.com/axetroy/fslint",
+  "license": "Anti-996 License",
+  "preferUnplugged": true,
+  "engines": {
+    "node": ">=12"
+  },
+  "files": ["fslint"],
+  "os": ["darwin"],
+  "cpu": ["arm64"]
+}

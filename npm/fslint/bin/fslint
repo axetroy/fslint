@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+const spawn = require("child_process").spawn;
+const os = require("os");
+const path = require("path");
+
+const platform = os.platform();
+const arch = os.arch();
+
+const ErrNotSupportPlatform = new Error("fslint not support your platform");
+
+/** @returns {string} */
+function getPrebuildBinaryPackage() {
+  if (platform === "win32") {
+    switch (arch) {
+      case "x64":
+        return "fslint-windows-amd64";
+      case "ia32":
+        return "fslint-windows-386";
+      case "arm":
+        return "fslint-windows-arm";
+      case "arm64":
+        return "fslint-windows-arm64";
+      default:
+        throw ErrNotSupportPlatform;
+    }
+  } else if (platform === "darwin") {
+    switch (arch) {
+      case "x64":
+        return "fslint-darwin-amd64";
+      case "arm64":
+        return "fslint-darwin-arm64";
+      default:
+        throw ErrNotSupportPlatform;
+    }
+  } else if (platform === "linux") {
+    switch (arch) {
+      case "x64":
+        return "fslint-linux-amd64";
+      case "ia32":
+        return "fslint-linux-386";
+      case "arm":
+        return "fslint-linux-arm";
+      case "arm64":
+        return "fslint-linux-arm64";
+      default:
+        throw ErrNotSupportPlatform;
+    }
+  } else {
+    throw ErrNotSupportPlatform;
+  }
+}
+
+const binaryPackageName = getPrebuildBinaryPackage();
+
+const binaryPackageDir = path.dirname(
+  require.resolve(`${binaryPackageName}/package.json`)
+);
+
+const executableFileName = "fslint" + (platform === "win32" ? ".exe" : "");
+
+const executableFilePath = path.join(binaryPackageDir, executableFileName);
+
+const ps = spawn(executableFilePath, process.argv.slice(2), {
+  cwd: process.cwd(),
+  stdio: "inherit",
+});
+
+ps.on("close", (code) => {
+  process.exit(code);
+});

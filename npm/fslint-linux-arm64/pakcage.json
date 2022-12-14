@@ -1,0 +1,14 @@
+{
+  "name": "fslint-linux-amd64",
+  "version": "0.1.0",
+  "description": "The Linux 64-Bit binary for fslint",
+  "repository": "https://github.com/axetroy/fslint",
+  "license": "Anti-996 License",
+  "preferUnplugged": true,
+  "engines": {
+    "node": ">=12"
+  },
+  "files": ["fslint"],
+  "os": ["linux"],
+  "cpu": ["x64"]
+}
