@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const spawn = require("child_process").spawn;
 const os = require("os");
 const path = require("path");
@@ -76,11 +74,20 @@ function exec(argv, spawnOptions = {}) {
 }
 
 /**
- *
+ * @param {Object} params0
+ * @param {string} params0.config The config file path
+ * @param {number} [params0.maxError] The max error
  * @returns {Promise<any>}
  */
-function fslint() {
-  const ps = exec(["--json", "--no-color"], {
+function fslint({ config, maxError }) {
+  const args = ["--json", "--no-color", "--config", config];
+
+  if (maxError) {
+    args.push("--max-error");
+    args.push(maxError);
+  }
+
+  const ps = exec(args, {
     stdout: "pipe",
     stderr: "pipe",
   });
