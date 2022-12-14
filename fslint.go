@@ -12,11 +12,27 @@ import (
 	glob "github.com/ryanuber/go-glob"
 )
 
+var (
+	ERR_MAX_ERROR = errors.New("MAX ERROR")
+)
+
 func isGlob(pattern string) bool {
 	return strings.Contains(pattern, "*")
 }
 
-func handleMatchFile(results *Results, selector Selector, exclude *[]string) error {
+func isOverMaxError(results *Results, maxError *int) bool {
+	if maxError == nil || *maxError <= 0 {
+		return false
+	}
+
+	if results.ErrorCount() >= *maxError {
+		return true
+	}
+
+	return false
+}
+
+func handleMatchFile(results *Results, selector Selector, exclude *[]string, maxError *int) error {
 	var (
 		isFolder bool = false
 	)
@@ -94,11 +110,11 @@ loop:
 
 			testTarget = splits[len(splits)-1]
 		} else {
-			filenameWitoutExtension := filepath.Base(file)
+			filenameWithoutExtension := filepath.Base(file)
 
-			filenameWitoutExtension = strings.TrimRight(filenameWitoutExtension, filepath.Ext(filenameWitoutExtension))
+			filenameWithoutExtension = strings.TrimRight(filenameWithoutExtension, filepath.Ext(filenameWithoutExtension))
 
-			testTarget = filenameWitoutExtension
+			testTarget = filenameWithoutExtension
 		}
 
 		switch selector.Pattern {
@@ -109,6 +125,10 @@ loop:
 					Expect:   ModePascalCase,
 					Level:    selector.Level,
 				})
+
+				if isOverMaxError(results, maxError) {
+					return ERR_MAX_ERROR
+				}
 			}
 		case ModeCamelCase:
 			if !parser.IsCamelCase(testTarget) {
@@ -117,6 +137,10 @@ loop:
 					Expect:   ModeCamelCase,
 					Level:    selector.Level,
 				})
+
+				if isOverMaxError(results, maxError) {
+					return ERR_MAX_ERROR
+				}
 			}
 		case ModeKebabCase:
 			if !parser.IsKebabCase(testTarget) {
@@ -125,6 +149,10 @@ loop:
 					Expect:   ModeKebabCase,
 					Level:    selector.Level,
 				})
+
+				if isOverMaxError(results, maxError) {
+					return ERR_MAX_ERROR
+				}
 			}
 		case ModeSnakeCase:
 			if !parser.IsSnakeCase(testTarget) {
@@ -133,6 +161,10 @@ loop:
 					Expect:   ModeSnakeCase,
 					Level:    selector.Level,
 				})
+
+				if isOverMaxError(results, maxError) {
+					return ERR_MAX_ERROR
+				}
 			}
 		default:
 			if isRegExpStr(string(selector.Pattern)) {
@@ -150,6 +182,10 @@ loop:
 						Expect:   ModeRegExp,
 						Level:    selector.Level,
 					})
+
+					if isOverMaxError(results, maxError) {
+						return ERR_MAX_ERROR
+					}
 				}
 			}
 		}
@@ -159,7 +195,11 @@ loop:
 	return nil
 }
 
-func Lint(configFilepath string) (*Results, error) {
+type LintOptions struct {
+	MaxError *int
+}
+
+func Lint(configFilepath string, options *LintOptions) (*Results, error) {
 	var (
 		results = NewResults()
 	)
@@ -170,8 +210,18 @@ func Lint(configFilepath string) (*Results, error) {
 		return nil, errors.WithStack(err)
 	}
 
+	if options != nil {
+		if options.MaxError != nil {
+			config.MaxError = options.MaxError
+		}
+	}
+
 	for _, selector := range config.Include {
-		if err := handleMatchFile(results, selector, config.Exclude); err != nil {
+		if err := handleMatchFile(results, selector, config.Exclude, config.MaxError); err != nil {
+			if errors.Is(err, ERR_MAX_ERROR) {
+				return results, nil
+			}
+
 			return nil, errors.WithStack(err)
 		}
 	}

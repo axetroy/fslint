@@ -20,6 +20,7 @@ $ fslint --config=.fslintrc.jsonc
 
 ```jsonc
 {
+  "maxError": 0, // Max amount of error
   "exclude": ["vendor", "node_modules", "bin", ".git"], // The folder name will be ignore
   "include": [
     {

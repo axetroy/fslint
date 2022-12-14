@@ -26,17 +26,18 @@ var (
 )
 
 func printHelp() {
-	println(`fslint - a cli tool for lint file system style
+	println(`fslint - a file system naming style lint
 
 USAGE:
   fslint [OPTIONS]
 
 OPTIONS:
-  --help        Print help information.
-  --version     Print version information.
-  --config      Specify '.fslintrc.jsonc'. defaults to '.fslintrc.jsonc'.
-  --json        Output the lint result as JSON
-  --no-color    Disabled color for printing
+  --help                 Print help information
+  --version              Print version information
+  --config <filepath>    Specify fslint config. defaults to '.fslintrc.jsonc'
+  --json                 Output the lint result as JSON
+  --no-color             Disabled color for printing
+	--max-error <number>   Set max error. defaults to zero
 
 SOURCE CODE:
   https://github.com/axetroy/fslint`)
@@ -49,11 +50,13 @@ func run() error {
 		configPath  string
 		outputJSON  bool
 		noColor     bool
+		maxError    int
 	)
 
 	flag.StringVar(&configPath, "config", ".fslintrc.jsonc", "The config of fslint")
 	flag.BoolVar(&outputJSON, "json", false, "Output the lint result as JSON")
 	flag.BoolVar(&noColor, "no-color", false, "disabled color for printing")
+	flag.IntVar(&maxError, "max-error", 0, "Set max error")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
 	flag.BoolVar(&showVersion, "version", false, "Print version information")
 
@@ -77,7 +80,7 @@ func run() error {
 		color.Enable = false
 	}
 
-	results, err := fslint.Lint(configPath)
+	results, err := fslint.Lint(configPath, &fslint.LintOptions{MaxError: &maxError})
 
 	if err != nil {
 		return errors.WithStack(err)

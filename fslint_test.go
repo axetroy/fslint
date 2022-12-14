@@ -159,7 +159,7 @@ func TestLint(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := Lint(tt.args.configFilepath)
+			got, err := Lint(tt.args.configFilepath, nil)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Lint() error = %v, wantErr %v", err, tt.wantErr)
 				return

@@ -49,8 +49,9 @@ var (
 )
 
 type Config struct {
-	Exclude *[]string  `json:"exclude"`
-	Include []Selector `json:"include" validate:"required,dive,required"`
+	MaxError *int       `json:"maxError"`
+	Exclude  *[]string  `json:"exclude"`
+	Include  []Selector `json:"include" validate:"required,dive,required"`
 }
 
 type Selector struct {

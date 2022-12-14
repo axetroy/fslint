@@ -9,6 +9,9 @@ type LintResult struct {
 }
 
 type Results struct {
+	errCount  int
+	warnCount int
+
 	values []LintResult
 }
 
@@ -31,6 +34,15 @@ func (r *Results) has(result LintResult) bool {
 func (r *Results) Append(item LintResult) {
 	if !r.has(item) {
 		r.values = append(r.values, item)
+
+		switch item.Level {
+		case LevelError:
+			r.errCount += 1
+			break
+		case LevelWarn:
+			r.warnCount += 1
+			break
+		}
 	}
 }
 
@@ -47,11 +59,11 @@ func (r *Results) count(targetLevel Level) int {
 }
 
 func (r *Results) WarnCount() int {
-	return r.count(LevelWarn)
+	return r.warnCount
 }
 
 func (r *Results) ErrorCount() int {
-	return r.count(LevelError)
+	return r.errCount
 }
 
 func (r *Results) Values() []LintResult {
