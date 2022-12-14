@@ -1,5 +1,5 @@
 {
-  "name": "fslint-darwin-amd64",
+  "name": "@axetroy/fslint-darwin-amd64",
   "version": "0.1.0",
   "description": "The MacOS 64-bit binary for fslint",
   "repository": "https://github.com/axetroy/fslint",
