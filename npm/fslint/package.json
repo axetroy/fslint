@@ -9,7 +9,7 @@
   "bin": "bin/fslint",
   "files": [
     "bin/fslint",
-    "lib",
+    "lib/index.js",
     "README.md",
     "LICENSE"
   ],
