@@ -1,5 +1,5 @@
 {
-  "name": "fslint-windows-arm64",
+  "name": "@axetroy/fslint-windows-arm64",
   "version": "0.1.0",
   "description": "The Windows arm64 binary for fslint",
   "repository": "https://github.com/axetroy/fslint",

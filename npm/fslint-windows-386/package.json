@@ -1,5 +1,5 @@
 {
-  "name": "fslint-windows-386",
+  "name": "@axetroy/fslint-windows-386",
   "version": "0.1.0",
   "description": "The Windows 32-bit binary for fslint",
   "repository": "https://github.com/axetroy/fslint",

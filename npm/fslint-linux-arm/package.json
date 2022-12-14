@@ -1,5 +1,5 @@
 {
-  "name": "fslint-linux-arm",
+  "name": "@axetroy/fslint-linux-arm",
   "version": "0.1.0",
   "description": "The Linux arm binary for fslint",
   "repository": "https://github.com/axetroy/fslint",

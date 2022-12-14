@@ -22,7 +22,7 @@ for (const pkgName of packages) {
 
   if (pkg.optionalDependencies) {
     for (const subDeps in pkg.optionalDependencies) {
-      if (subDeps.startsWith("fslint-")) {
+      if (subDeps.startsWith("@axetroy/fslint-")) {
         pkg.optionalDependencies[subDeps] = version;
       }
     }
