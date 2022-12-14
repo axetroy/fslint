@@ -28,6 +28,10 @@
     "@axetroy/fslint-freebsd-arm": "0.1.0",
     "@axetroy/fslint-freebsd-arm64": "0.1.0",
     "@axetroy/fslint-freebsd-amd64": "0.1.0",
+    "@axetroy/fslint-openbsd-386": "0.1.0",
+    "@axetroy/fslint-openbsd-arm": "0.1.0",
+    "@axetroy/fslint-openbsd-arm64": "0.1.0",
+    "@axetroy/fslint-openbsd-amd64": "0.1.0",
     "@axetroy/fslint-windows-arm": "0.1.0",
     "@axetroy/fslint-windows-arm64": "0.1.0",
     "@axetroy/fslint-windows-amd64": "0.1.0"

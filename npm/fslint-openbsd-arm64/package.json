@@ -1,7 +1,7 @@
 {
-  "name": "@axetroy/fslint-freebsd-386",
+  "name": "@axetroy/fslint-openbsd-arm64",
   "version": "0.1.0",
-  "description": "The FreeBSD 32-Bit binary for fslint",
+  "description": "The OpenBSD arm64 binary for fslint",
   "repository": "https://github.com/axetroy/fslint",
   "license": "Anti-996 License",
   "private": false,
@@ -10,6 +10,6 @@
     "node": ">=12"
   },
   "files": ["fslint"],
-  "os": ["freebsd"],
-  "cpu": ["ia32"]
+  "os": ["openbsd"],
+  "cpu": ["arm64"]
 }
