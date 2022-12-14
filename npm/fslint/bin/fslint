@@ -54,7 +54,7 @@ function getPrebuildBinaryPackage() {
 const binaryPackageName = getPrebuildBinaryPackage();
 
 const binaryPackageDir = path.dirname(
-  require.resolve(`${binaryPackageName}/package.json`)
+  require.resolve(`@axetroy/${binaryPackageName}/package.json`)
 );
 
 const executableFileName = "fslint" + (platform === "win32" ? ".exe" : "");
