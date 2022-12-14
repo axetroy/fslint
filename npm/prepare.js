@@ -63,5 +63,15 @@ for (const pkgName of packages) {
       executableFilePath,
       path.join(__dirname, pkgName, executableFileName)
     );
+  } else {
+    fs.copyFileSync(
+      path.join(__dirname, "..", "README.md"),
+      path.join(__dirname, pkgName, "README.md")
+    );
+
+    fs.copyFileSync(
+      path.join(__dirname, "..", "LICENSE"),
+      path.join(__dirname, pkgName, "LICENSE")
+    );
   }
 }
