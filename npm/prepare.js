@@ -34,7 +34,7 @@ for (const pkgName of packages) {
     const fileMap = {
       "fslint-darwin-arm64": "fslint_darwin_arm64",
       "fslint-darwin-amd64": "fslint_darwin_amd64_v1",
-      "fslint-linux-arm": "fslint_linux_armv_7",
+      "fslint-linux-arm": "fslint_linux_arm_7",
       "fslint-linux-amd64": "fslint_linux_amd64_v1",
       "fslint-linux-arm64": "fslint_linux_arm64",
       "fslint-windows-386": "fslint_windows_386",
