@@ -24,6 +24,10 @@
     "@axetroy/fslint-linux-mipsel": "0.1.0",
     "@axetroy/fslint-linux-mips64": "0.1.0",
     "@axetroy/fslint-linux-mips64el": "0.1.0",
+    "@axetroy/fslint-freebsd-386": "0.1.0",
+    "@axetroy/fslint-freebsd-arm": "0.1.0",
+    "@axetroy/fslint-freebsd-arm64": "0.1.0",
+    "@axetroy/fslint-freebsd-amd64": "0.1.0",
     "@axetroy/fslint-windows-arm": "0.1.0",
     "@axetroy/fslint-windows-arm64": "0.1.0",
     "@axetroy/fslint-windows-amd64": "0.1.0"
