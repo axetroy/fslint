@@ -7,7 +7,7 @@ const path = require("path");
 const platform = os.platform();
 const arch = os.arch();
 
-const ErrNotSupportPlatform = new Error("fslint not support your platform");
+const ErrNotSupportPlatform = new Error("fslint does not support your platform");
 
 /** @returns {string} */
 function getPrebuildBinaryPackage() {
