@@ -1,7 +1,7 @@
 {
   "name": "@axetroy/fslint-openbsd-386",
   "version": "0.1.0",
-  "description": "The OpenBSD 64-Bit binary for fslint",
+  "description": "The OpenBSD 32-Bit binary for fslint",
   "repository": "https://github.com/axetroy/fslint",
   "license": "Anti-996 License",
   "private": false,
