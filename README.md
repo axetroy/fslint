@@ -66,7 +66,7 @@ $r="axetroy/fslint";iwr https://github.com/release-lab/install/raw/v1/install.ps
 4. 使用 [Golang](https://golang.org) 从源码中构建并安装 (全平台支持)
 
 ```bash
-go install github.com/axetroy/fslint/cmd/fslint@v0.3.6
+go install github.com/axetroy/fslint/cmd/fslint
 ```
 
 5. 通过 npm 安装

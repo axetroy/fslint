@@ -66,7 +66,7 @@ $r="axetroy/fslint";iwr https://github.com/release-lab/install/raw/v1/install.ps
 4. Build and install from source using [Golang](https://golang.org) (All platforms)
 
 ```bash
-go install github.com/axetroy/fslint/cmd/fslint@v0.3.6
+go install github.com/axetroy/fslint/cmd/fslint
 ```
 
 5. Install via npm
