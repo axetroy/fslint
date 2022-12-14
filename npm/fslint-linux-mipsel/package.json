@@ -1,0 +1,21 @@
+{
+  "name": "@axetroy/fslint-linux-mipsel",
+  "version": "1.0.0",
+  "description": "The Linux mipsel binary for fslint",
+  "repository": "https://github.com/axetroy/fslint",
+  "license": "Anti-996 License",
+  "private": false,
+  "preferUnplugged": true,
+  "engines": {
+    "node": ">=12"
+  },
+  "files": [
+    "fslint"
+  ],
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "mipsel"
+  ]
+}
