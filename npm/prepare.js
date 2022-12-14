@@ -1,3 +1,8 @@
+/**
+ * Usage:
+ *
+ * GIT_REF=refs/tags/v1.0.0 node npm/prepare.js
+ */
 const fs = require("fs");
 const path = require("path");
 
