@@ -16,6 +16,7 @@
   "optionalDependencies": {
     "@axetroy/fslint-darwin-amd64": "0.1.0",
     "@axetroy/fslint-darwin-arm64": "0.1.0",
+    "@axetroy/fslint-linux-386": "0.1.0",
     "@axetroy/fslint-linux-arm": "0.1.0",
     "@axetroy/fslint-linux-arm64": "0.1.0",
     "@axetroy/fslint-linux-amd64": "0.1.0",
