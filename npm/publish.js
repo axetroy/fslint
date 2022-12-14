@@ -19,7 +19,9 @@ async function main() {
       });
 
       ps.on("close", (code) => {
-        code === 0 ? resolve : reject(new Error(`Process exist with ${code}`));
+        code === 0
+          ? resolve()
+          : reject(new Error(`Process exist with ${code}`));
       });
     });
   }
