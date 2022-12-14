@@ -4,7 +4,7 @@ const path = require("path");
 const ref = process.env.GIT_REF; // refs/tags/v1.0.0
 
 const arr = ref.split("/");
-const version = arr[arr.length - 1];
+const version = arr[arr.length - 1].replace(/^v/, "");
 
 console.log(`prepare publish to npm for: ${version}`);
 
@@ -34,4 +34,4 @@ for (const subDeps in mainPkg.optionalDependencies) {
   }
 }
 
-fs.writeFileSync(mainPkg, JSON.stringify(mainPkg, null, 2));
+fs.writeFileSync(mainPkgPath, JSON.stringify(mainPkg, null, 2));
