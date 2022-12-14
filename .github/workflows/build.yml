@@ -61,6 +61,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
+          registry-url: "https://registry.npmjs.org"
 
       - uses: axetroy/setup-whatchanged@v1
         with:
@@ -83,3 +84,8 @@ jobs:
         run: node npm/prepare.js
         env:
           GIT_REF: ${{ github.ref }}
+
+      - name: Publish npm package
+        run: node npm/publish.js
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
