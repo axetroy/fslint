@@ -45,7 +45,7 @@ for (const pkgName of packages) {
       "fslint-linux-arm64": "fslint_linux_arm64",
       "fslint-linux-mips": "fslint_linux_mips_softfloat",
       "fslint-linux-mips64": "fslint_linux_mips64_softfloat",
-      "fslint-linux-mips64el": "fslint_linux_mips64el_softfloat",
+      "fslint-linux-mips64el": "fslint_linux_mips64le_softfloat",
       "fslint-windows-386": "fslint_windows_386",
       "fslint-windows-amd64": "fslint_windows_amd64_v1",
       "fslint-windows-arm": "fslint_windows_arm_7",
