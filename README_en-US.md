@@ -20,17 +20,17 @@ $ fslint --config=.fslintrc.jsonc
 
 ```jsonc
 {
-  "exclude": ["vendor", "node_modules", "bin", ".git"],
+  "exclude": ["vendor", "node_modules", "bin", ".git"], // The folder name will be ignore
   "include": [
     {
-      "file": "./src/**/*.vue", // lint for file
+      "file": "./src/**/*.vue", // lint for file, support Glob grammar
       "level": "error",
       "pattern": "PascalCase",
-      "ignore": ["**/index.vue"] // ignore index.vue in this rule
+      "ignore": ["**/index.vue"] // ignore index.vue in this rule, support Glob grammar
     },
     {
       "folder": "./src/**/*", // lint for folder
-      "level": "error",
+      "level": "warn",
       "pattern": "kebab-case"
     }
   ]

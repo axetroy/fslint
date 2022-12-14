@@ -20,17 +20,17 @@ $ fslint --config=.fslintrc.jsonc
 
 ```jsonc
 {
-  "exclude": ["vendor", "node_modules", "bin", ".git"],
+  "exclude": ["vendor", "node_modules", "bin", ".git"], // 忽略的目录名称
   "include": [
     {
-      "file": "./src/**/*.vue", // 检测 *.vue 文件
+      "file": "./src/**/*.vue", // 检测 *.vue 文件，支持 Glob 语法
       "level": "error",
       "pattern": "PascalCase",
-      "ignore": ["**/index.vue"] // 在这条规则中忽略 index.vue 文件
+      "ignore": ["**/index.vue"] // 在这条规则中忽略 index.vue 文件，支持 Glob 语法
     },
     {
       "folder": "./src/**/*", // 检测文件夹
-      "level": "error",
+      "level": "warn",
       "pattern": "kebab-case"
     }
   ]
