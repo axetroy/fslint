@@ -62,7 +62,6 @@ func TestLint(t *testing.T) {
 					Expect:   ModeKebabCase,
 					Level:    LevelError,
 				},
-
 				{
 					FilePath: "fixtures/TestFolder/Nest_Folder",
 					Expect:   ModeKebabCase,

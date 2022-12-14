@@ -1,0 +1,11 @@
+{
+  "exclude": ["vendor"],
+  "include": [
+    {
+      "file": "**/*.go",
+      "level": "error",
+      "pattern": "snake_case",
+      "ignore": ["**/parser/*.go"]
+    }
+  ]
+}

@@ -34,7 +34,7 @@ USAGE:
 OPTIONS:
   --help        Print help information.
   --version     Print version information.
-  --config      Specify ‘.fslintrc.json’. defaults to '.fslintrc.json'.
+  --config      Specify '.fslintrc.jsonc'. defaults to '.fslintrc.jsonc'.
   --json        Output the lint result as JSON
   --no-color    Disabled color for printing
 
@@ -51,7 +51,7 @@ func run() error {
 		noColor     bool
 	)
 
-	flag.StringVar(&configPath, "config", ".fslintrc.json", "The config of fslint")
+	flag.StringVar(&configPath, "config", ".fslintrc.jsonc", "The config of fslint")
 	flag.BoolVar(&outputJSON, "json", false, "Output the lint result as JSON")
 	flag.BoolVar(&noColor, "no-color", false, "disabled color for printing")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
@@ -77,51 +77,46 @@ func run() error {
 		color.Enable = false
 	}
 
-	if results, err := fslint.Lint(configPath); err != nil {
+	results, err := fslint.Lint(configPath)
+
+	if err != nil {
 		return errors.WithStack(err)
+	}
+
+	if outputJSON {
+		b, err := json.Marshal(results.Values())
+
+		if err != nil {
+			return errors.WithStack(err)
+		}
+
+		if _, err = os.Stdout.Write(b); err != nil {
+			return errors.WithStack(err)
+		}
 	} else {
-		if outputJSON {
-			b, err := json.Marshal(results.Values())
+		for _, result := range results.Values() {
+			level := "warn"
+
+			switch result.Level {
+			case fslint.LevelWarn:
+				level = yellow("warn")
+			case fslint.LevelError:
+				level = red("error")
+			}
+
+			color.Fprintf(os.Stderr, "[fslint]: %s '%s' not match with pattern '%v'\n", level, blue(result.FilePath), green(result.Expect))
 
 			if err != nil {
 				return errors.WithStack(err)
 			}
+		}
 
-			if _, err = os.Stdout.Write(b); err != nil {
-				return errors.WithStack(err)
-			}
-		} else {
-			var (
-				errorNum = 0
-				warnNum  = 0
-			)
+		elapsed := time.Since(startAt)
 
-			for _, result := range results.Values() {
-				level := "warn "
+		color.Fprintf(os.Stderr, "[fslint]: finish with %s warning and %s error in %s.\n", yellow(results.WarnCount()), red(results.ErrorCount()), green(elapsed))
 
-				switch result.Level {
-				case fslint.LevelWarn:
-					level = yellow("warn ")
-					warnNum = warnNum + 1
-				case fslint.LevelError:
-					level = red("error")
-					errorNum = errorNum + 1
-				}
-
-				color.Fprintf(os.Stderr, "[fslint]: %s '%s' not match with pattern '%v'\n", level, blue(result.FilePath), green(result.Expect))
-
-				if err != nil {
-					return errors.WithStack(err)
-				}
-			}
-
-			elapsed := time.Since(startAt)
-
-			color.Fprintf(os.Stderr, "[fslint]: finish with %s warning and %s error in %s.\n", yellow(warnNum), red(errorNum), green(elapsed))
-
-			if results.ErrorCount() > 0 {
-				os.Exit(1)
-			}
+		if results.ErrorCount() > 0 {
+			os.Exit(1)
 		}
 	}
 
@@ -130,7 +125,7 @@ func run() error {
 
 func main() {
 	if err := run(); err != nil {
-		fmt.Printf("%+v\n", err)
+		fmt.Fprintf(os.Stderr, "%+v\n", err)
 		os.Exit(255)
 	}
 }

@@ -34,10 +34,11 @@ func (r *Results) Append(item LintResult) {
 	}
 }
 
-func (r *Results) WarnCount() int {
+func (r *Results) count(targetLevel Level) int {
 	count := 0
+
 	for _, item := range r.values {
-		if item.Level == LevelWarn {
+		if item.Level == targetLevel {
 			count = count + 1
 		}
 	}
@@ -45,15 +46,12 @@ func (r *Results) WarnCount() int {
 	return count
 }
 
-func (r *Results) ErrorCount() int {
-	count := 0
-	for _, item := range r.values {
-		if item.Level == LevelError {
-			count = count + 1
-		}
-	}
+func (r *Results) WarnCount() int {
+	return r.count(LevelWarn)
+}
 
-	return count
+func (r *Results) ErrorCount() int {
+	return r.count(LevelError)
 }
 
 func (r *Results) Values() []LintResult {
