@@ -44,6 +44,8 @@ var (
 		LevelWarn,
 		LevelError,
 	}
+
+	DefaultExclude = []string{"node_modules", ".git", ".vscode", ".idea"}
 )
 
 type Config struct {
@@ -206,7 +208,29 @@ func NewConfig(content []byte) (*Config, error) {
 		return nil, errors.New(strings.Join(msg, "\n"))
 	}
 
+	if config.Exclude == nil {
+		config.Exclude = &DefaultExclude
+	} else {
+		for _, d := range DefaultExclude {
+			if !isInclude(*config.Exclude, d) {
+				arr := append(*config.Exclude, d)
+
+				config.Exclude = &arr
+			}
+		}
+	}
+
 	return &config, nil
+}
+
+func isInclude[T string](arr []T, target T) bool {
+	for _, element := range arr {
+		if element == target {
+			return true
+		}
+	}
+
+	return false
 }
 
 func readConfig(configFilepath string) (*Config, error) {
