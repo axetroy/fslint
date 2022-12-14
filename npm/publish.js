@@ -18,7 +18,7 @@ async function main() {
     const cwd = path.join(__dirname, pkg);
 
     await new Promise((resolve, reject) => {
-      const ps = spawn("npm", ["publish", "--access-public"], {
+      const ps = spawn("npm", ["publish", "--access", "public"], {
         cwd: cwd,
         stdio: "inherit",
         env: process.env,
