@@ -4,6 +4,7 @@
   "description": "The MacOS arm64 binary for fslint",
   "repository": "https://github.com/axetroy/fslint",
   "license": "Anti-996 License",
+  "private": false,
   "preferUnplugged": true,
   "engines": {
     "node": ">=12"

@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "author": "Axetroy <axetroy.dev@gmail.com>",
   "license": "Anti-996",
+  "private": false,
   "bin": "bin/fslint",
   "files": [
     "bin/fslint",
