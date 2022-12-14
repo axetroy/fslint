@@ -38,24 +38,10 @@ func (r *Results) Append(item LintResult) {
 		switch item.Level {
 		case LevelError:
 			r.errCount += 1
-			break
 		case LevelWarn:
 			r.warnCount += 1
-			break
 		}
 	}
-}
-
-func (r *Results) count(targetLevel Level) int {
-	count := 0
-
-	for _, item := range r.values {
-		if item.Level == targetLevel {
-			count = count + 1
-		}
-	}
-
-	return count
 }
 
 func (r *Results) WarnCount() int {
