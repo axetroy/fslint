@@ -49,7 +49,7 @@ for (const pkgName of packages) {
     const distFolder = fileMap[pkgName];
 
     const executableFileName =
-      "fslint" + (pkgName.indexOf("windows") > -1) ? ".exe" : "";
+      "fslint" + (pkgName.indexOf("windows") > -1 ? ".exe" : "");
 
     const executableFilePath = path.join(
       __dirname,
