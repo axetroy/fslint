@@ -118,27 +118,12 @@ func TestLint(t *testing.T) {
 			},
 		},
 		{
-			name: "files",
+			name: "test with regexp patten",
 			args: args{
 				configFilepath: "fixtures/regexp.fslintrc.json",
 			},
 			wantErr: false,
 			want: []LintResult{
-				{
-					FilePath: "fixtures/files/CamelCase11.md",
-					Expect:   ModeRegExp,
-					Level:    LevelError,
-				},
-				{
-					FilePath: "fixtures/files/Kebab-Kebab21.md",
-					Expect:   ModeRegExp,
-					Level:    LevelError,
-				},
-				{
-					FilePath: "fixtures/files/Snake_Case31.md",
-					Expect:   ModeRegExp,
-					Level:    LevelError,
-				},
 				{
 					FilePath: "fixtures/files/camelCase12.md",
 					Expect:   ModeRegExp,
