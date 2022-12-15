@@ -37,7 +37,7 @@ OPTIONS:
   --config <filepath>    Specify fslint config. defaults to '.fslintrc.jsonc'
   --json                 Output the lint result as JSON
   --no-color             Disabled color for printing
-	--max-error <number>   Set max error. defaults to zero
+  --max-error <number>   Set max error. defaults to zero
 
 SOURCE CODE:
   https://github.com/axetroy/fslint`)

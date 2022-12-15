@@ -1,0 +1,15 @@
+fslint - a file system naming style lint
+
+USAGE:
+  fslint [OPTIONS]
+
+OPTIONS:
+  --help                 Print help information
+  --version              Print version information
+  --config <filepath>    Specify fslint config. defaults to '.fslintrc.jsonc'
+  --json                 Output the lint result as JSON
+  --no-color             Disabled color for printing
+  --max-error <number>   Set max error. defaults to zero
+
+SOURCE CODE:
+  https://github.com/axetroy/fslint
