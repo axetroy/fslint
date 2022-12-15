@@ -110,9 +110,9 @@ loop:
 
 			testTarget = splits[len(splits)-1]
 		} else {
-			filenameWithoutExtension := filepath.Base(file)
+			fileName := filepath.Base(file)
 
-			filenameWithoutExtension = strings.TrimRight(filenameWithoutExtension, filepath.Ext(filenameWithoutExtension))
+			filenameWithoutExtension := strings.TrimRight(fileName, filepath.Ext(fileName))
 
 			testTarget = filenameWithoutExtension
 		}
@@ -168,12 +168,11 @@ loop:
 			}
 		default:
 			if isRegExpStr(string(selector.Pattern)) {
-				val := strings.TrimLeft(string(selector.Pattern), "/")
-				val = strings.TrimRight(val, "/")
+				val := strings.Trim(string(selector.Pattern), "/")
 				reg, err := regexp.Compile(val)
 
 				if err != nil {
-					return errors.WithMessage(err, "invalid regexpression")
+					return errors.WithMessagef(err, "invalid RegExp expression '%s'", string(selector.Pattern))
 				}
 
 				if !reg.MatchString(testTarget) {
