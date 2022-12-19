@@ -16,7 +16,7 @@ const platformMap = {
   },
   darwin: {
     arm64: "fslint-darwin-arm64",
-    amd64: "fslint-darwin-amd64",
+    x64: "fslint-darwin-amd64",
   },
   linux: {
     ia32: "fslint-linux-386",
@@ -32,13 +32,13 @@ const platformMap = {
     ia32: "fslint-freebsd-386",
     arm: "fslint-freebsd-arm",
     arm64: "fslint-freebsd-arm64",
-    amd64: "fslint-freebsd-amd64",
+    x64: "fslint-freebsd-amd64",
   },
   openbsd: {
     ia32: "fslint-openbsd-386",
     arm: "fslint-openbsd-arm",
     arm64: "fslint-openbsd-arm64",
-    amd64: "fslint-openbsd-amd64",
+    x64: "fslint-openbsd-amd64",
   },
 };
 
