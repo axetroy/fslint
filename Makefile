@@ -2,7 +2,7 @@
 
 .DEFAULT:
 build: test
-	@goreleaser release --snapshot --rm-dist --skip-publish
+	@goreleaser release --snapshot --clean --skip=publish
 
 test:
 	@go test -mod=vendor --cover -covermode=count -coverprofile=coverage.out ./...
